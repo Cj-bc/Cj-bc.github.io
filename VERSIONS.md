@@ -1,9 +1,9 @@
 # all major versions
 
-    * v0.1 -- include self introduce
-    * v0.2 -- include contacts page
-    * v0.3 -- include main projects introduce
-    * v0.4 -- include version-switching system
+    * v0.1 -- include self introduction
+    * v0.2 -- include version-switching system
+    * v0.3 -- include contacts page
+    * v0.4 -- include main projects introduction
   * v1.0 -- plain-text update
     * v1.1 -- include my icon
     * v1.2 -- include background picture
