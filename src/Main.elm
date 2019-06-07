@@ -1,8 +1,9 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html, a, article, div, img, pre, text)
+import Html exposing (Html, a, article, button, div, img, pre, text)
 import Html.Attributes exposing (class, href, src)
+import Html.Events exposing (onClick)
 import List
 import Product exposing (Product(..))
 
@@ -149,7 +150,13 @@ viewBlog =
 
 viewHeader : Html Msg
 viewHeader =
-    div [] [ text "work in progress..." ]
+    div []
+        [ button [ onClick (ChangeTopic Top) ] [ text "Cj-bc" ]
+        , button [ onClick (ChangeTopic Aboutme) ] [ text "Aboutme" ]
+        , button [ onClick (ChangeTopic Projects) ] [ text "Projects" ]
+        , button [ onClick (ChangeTopic Products) ] [ text "Products" ]
+        , button [ onClick (ChangeTopic Blog) ] [ text "Blog" ]
+        ]
 
 
 viewFooter : Html Msg
@@ -159,4 +166,6 @@ viewFooter =
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
-    ( model, Cmd.none )
+    case msg of
+        ChangeTopic topic ->
+            ( { model | topic = topic }, Cmd.none )
