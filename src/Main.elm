@@ -110,7 +110,7 @@ viewTop =
 viewAboutme : Html Msg
 viewAboutme =
     div [ class "topic-aboutme" ]
-        [ img [ src "asetts/icon/cj-bc.jpg" ] []
+        [ img [ src "assets/icon/cj-bc.jpg" ] []
         , div [ class "aboutme-name" ] [ text "Cj.bc_sd a.k.a Cj-bc" ]
         , div [ class "aboutme-sns" ]
             [ a [ href "https://github.com/Cj-bc" ] [ text "@Cj-bc" ]
