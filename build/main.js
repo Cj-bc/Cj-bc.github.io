@@ -5112,7 +5112,10 @@ var elm$html$Html$button = _VirtualDom_node('button');
 var elm$html$Html$footer = _VirtualDom_node('footer');
 var elm$html$Html$form = _VirtualDom_node('form');
 var elm$html$Html$input = _VirtualDom_node('input');
+var elm$html$Html$label = _VirtualDom_node('label');
+var elm$html$Html$p = _VirtualDom_node('p');
 var elm$html$Html$textarea = _VirtualDom_node('textarea');
+var elm$html$Html$Attributes$for = elm$html$Html$Attributes$stringProperty('htmlFor');
 var elm$html$Html$Attributes$name = elm$html$Html$Attributes$stringProperty('name');
 var elm$html$Html$Attributes$type_ = elm$html$Html$Attributes$stringProperty('type');
 var author$project$Main$viewFooter = A2(
@@ -5129,39 +5132,90 @@ var author$project$Main$viewFooter = A2(
 				]),
 			_List_fromArray(
 				[
-					elm$html$Html$text('name:'),
 					A2(
-					elm$html$Html$input,
+					elm$html$Html$p,
+					_List_Nil,
 					_List_fromArray(
 						[
-							elm$html$Html$Attributes$name('Name'),
-							elm$html$Html$Attributes$type_('text')
-						]),
-					_List_Nil),
-					elm$html$Html$text('email:'),
+							A2(
+							elm$html$Html$label,
+							_List_fromArray(
+								[
+									elm$html$Html$Attributes$for('footer-name')
+								]),
+							_List_fromArray(
+								[
+									elm$html$Html$text('name:')
+								])),
+							A2(
+							elm$html$Html$input,
+							_List_fromArray(
+								[
+									elm$html$Html$Attributes$id('footer-name'),
+									elm$html$Html$Attributes$name('Name'),
+									elm$html$Html$Attributes$type_('text')
+								]),
+							_List_Nil)
+						])),
 					A2(
-					elm$html$Html$input,
+					elm$html$Html$p,
+					_List_Nil,
 					_List_fromArray(
 						[
-							elm$html$Html$Attributes$name('Email'),
-							elm$html$Html$Attributes$type_('text')
-						]),
-					_List_Nil),
-					elm$html$Html$text('message:'),
+							A2(
+							elm$html$Html$label,
+							_List_fromArray(
+								[
+									elm$html$Html$Attributes$for('footer-email')
+								]),
+							_List_fromArray(
+								[
+									elm$html$Html$text('email:')
+								])),
+							A2(
+							elm$html$Html$input,
+							_List_fromArray(
+								[
+									elm$html$Html$Attributes$id('footer-email'),
+									elm$html$Html$Attributes$name('Email'),
+									elm$html$Html$Attributes$type_('text')
+								]),
+							_List_Nil)
+						])),
 					A2(
-					elm$html$Html$textarea,
+					elm$html$Html$p,
+					_List_Nil,
 					_List_fromArray(
 						[
-							elm$html$Html$Attributes$name('message')
-						]),
-					_List_Nil),
+							A2(
+							elm$html$Html$label,
+							_List_fromArray(
+								[
+									elm$html$Html$Attributes$for('footer-message')
+								]),
+							_List_fromArray(
+								[
+									elm$html$Html$text('message:')
+								])),
+							A2(
+							elm$html$Html$textarea,
+							_List_fromArray(
+								[
+									elm$html$Html$Attributes$id('footer-message'),
+									elm$html$Html$Attributes$name('message')
+								]),
+							_List_Nil)
+						])),
 					A2(
 					elm$html$Html$button,
 					_List_fromArray(
 						[
 							elm$html$Html$Attributes$type_('submit')
 						]),
-					_List_Nil)
+					_List_fromArray(
+						[
+							elm$html$Html$text('submit')
+						]))
 				]))
 		]));
 var author$project$Main$Aboutme = {$: 'Aboutme'};

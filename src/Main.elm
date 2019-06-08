@@ -1,8 +1,8 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html, a, article, button, div, footer, form, img, input, pre, text, textarea)
-import Html.Attributes exposing (class, href, id, name, src, type_)
+import Html exposing (Html, a, article, button, div, footer, form, img, input, label, p, pre, text, textarea)
+import Html.Attributes exposing (class, for, href, id, name, src, type_)
 import Html.Events exposing (onClick)
 import List
 import Netlify exposing (netlify)
@@ -168,13 +168,20 @@ viewFooter : Html Msg
 viewFooter =
     footer []
         [ form [ name "contact", netlify "" ]
-            [ text "name:"
-            , input [ name "Name", type_ "text" ] []
-            , text "email:"
-            , input [ name "Email", type_ "text" ] []
-            , text "message:"
-            , textarea [ name "message" ] []
-            , button [ type_ "submit" ] []
+            [ p []
+                [ label [ for "footer-name" ] [ text "name:" ]
+                , input [ id "footer-name", name "Name", type_ "text" ] []
+                ]
+            , p
+                []
+                [ label [ for "footer-email" ] [ text "email:" ]
+                , input [ id "footer-email", name "Email", type_ "text" ] []
+                ]
+            , p []
+                [ label [ for "footer-message" ] [ text "message:" ]
+                , textarea [ id "footer-message", name "message" ] []
+                ]
+            , button [ type_ "submit" ] [ text "submit" ]
             ]
         ]
 
