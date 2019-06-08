@@ -4883,13 +4883,6 @@ var author$project$Main$viewAboutme = A2(
 			_List_fromArray(
 				[
 					A2(
-					elm$html$Html$img,
-					_List_fromArray(
-						[
-							elm$html$Html$Attributes$src('assets/icon/twitter_blue.svg')
-						]),
-					_List_Nil),
-					A2(
 					elm$html$Html$a,
 					_List_fromArray(
 						[
@@ -4899,6 +4892,13 @@ var author$project$Main$viewAboutme = A2(
 						[
 							elm$html$Html$text('@Cj-bc')
 						])),
+					A2(
+					elm$html$Html$img,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$src('assets/icon/twitter_blue.svg')
+						]),
+					_List_Nil),
 					A2(
 					elm$html$Html$a,
 					_List_fromArray(
