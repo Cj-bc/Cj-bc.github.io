@@ -2,7 +2,7 @@ module Main exposing (main)
 
 import Browser
 import Html exposing (Html, a, article, button, div, img, pre, text)
-import Html.Attributes exposing (class, href, src)
+import Html.Attributes exposing (class, href, id, src)
 import Html.Events exposing (onClick)
 import List
 import Octicons as Oct
@@ -116,7 +116,7 @@ viewAboutme =
         , div [ class "aboutme-sns" ]
             [ Oct.markGithub Oct.defaultOptions
             , a [ href "https://github.com/Cj-bc" ] [ text "@Cj-bc" ]
-            , img [ src "assets/icon/twitter_blue.svg" ] []
+            , img [ id "twitter-logo", src "assets/icon/twitter_blue.svg" ] []
             , a [ href "https://twitter.com/Cj_bc_sd" ] [ text "@Cj_bc_sd" ]
             ]
         , div [ class "aboutme-details" ]

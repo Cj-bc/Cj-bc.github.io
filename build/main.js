@@ -5012,6 +5012,7 @@ var elm$html$Html$Attributes$href = function (url) {
 		'href',
 		_VirtualDom_noJavaScriptUri(url));
 };
+var elm$html$Html$Attributes$id = elm$html$Html$Attributes$stringProperty('id');
 var elm$html$Html$Attributes$src = function (url) {
 	return A2(
 		elm$html$Html$Attributes$stringProperty,
@@ -5066,6 +5067,7 @@ var author$project$Main$viewAboutme = A2(
 					elm$html$Html$img,
 					_List_fromArray(
 						[
+							elm$html$Html$Attributes$id('twitter-logo'),
 							elm$html$Html$Attributes$src('assets/icon/twitter_blue.svg')
 						]),
 					_List_Nil),
