@@ -174,6 +174,7 @@ viewFooter =
             , input [ name "Email", type_ "text" ] []
             , text "message:"
             , textarea [ name "message" ] []
+            , button [ type_ "submit" ] []
             ]
         ]
 

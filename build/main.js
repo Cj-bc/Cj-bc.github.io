@@ -5108,6 +5108,7 @@ var elm$virtual_dom$VirtualDom$attribute = F2(
 			_VirtualDom_noJavaScriptOrHtmlUri(value));
 	});
 var author$project$Netlify$netlify = elm$virtual_dom$VirtualDom$attribute('netlify');
+var elm$html$Html$button = _VirtualDom_node('button');
 var elm$html$Html$footer = _VirtualDom_node('footer');
 var elm$html$Html$form = _VirtualDom_node('form');
 var elm$html$Html$input = _VirtualDom_node('input');
@@ -5153,6 +5154,13 @@ var author$project$Main$viewFooter = A2(
 						[
 							elm$html$Html$Attributes$name('message')
 						]),
+					_List_Nil),
+					A2(
+					elm$html$Html$button,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$type_('submit')
+						]),
 					_List_Nil)
 				]))
 		]));
@@ -5163,7 +5171,6 @@ var author$project$Main$ChangeTopic = function (a) {
 };
 var author$project$Main$Products = {$: 'Products'};
 var author$project$Main$Projects = {$: 'Projects'};
-var elm$html$Html$button = _VirtualDom_node('button');
 var elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
 };
