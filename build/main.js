@@ -5100,12 +5100,61 @@ var author$project$Main$viewBlog = A2(
 		[
 			elm$html$Html$text('work in progress...')
 		]));
+var elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
+		return A2(
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
+	});
+var author$project$Netlify$netlify = elm$virtual_dom$VirtualDom$attribute('netlify');
+var elm$html$Html$footer = _VirtualDom_node('footer');
+var elm$html$Html$form = _VirtualDom_node('form');
+var elm$html$Html$input = _VirtualDom_node('input');
+var elm$html$Html$textarea = _VirtualDom_node('textarea');
+var elm$html$Html$Attributes$name = elm$html$Html$Attributes$stringProperty('name');
+var elm$html$Html$Attributes$type_ = elm$html$Html$Attributes$stringProperty('type');
 var author$project$Main$viewFooter = A2(
-	elm$html$Html$div,
+	elm$html$Html$footer,
 	_List_Nil,
 	_List_fromArray(
 		[
-			elm$html$Html$text('work in progress...')
+			A2(
+			elm$html$Html$form,
+			_List_fromArray(
+				[
+					elm$html$Html$Attributes$name('contact'),
+					author$project$Netlify$netlify('')
+				]),
+			_List_fromArray(
+				[
+					elm$html$Html$text('name:'),
+					A2(
+					elm$html$Html$input,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$name('Name'),
+							elm$html$Html$Attributes$type_('text')
+						]),
+					_List_Nil),
+					elm$html$Html$text('email:'),
+					A2(
+					elm$html$Html$input,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$name('Email'),
+							elm$html$Html$Attributes$type_('text')
+						]),
+					_List_Nil),
+					elm$html$Html$text('message:'),
+					A2(
+					elm$html$Html$textarea,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$name('message')
+						]),
+					_List_Nil)
+				]))
 		]));
 var author$project$Main$Aboutme = {$: 'Aboutme'};
 var author$project$Main$Blog = {$: 'Blog'};

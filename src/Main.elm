@@ -1,12 +1,14 @@
 module Main exposing (main)
 
 import Browser
-import Html exposing (Html, a, article, button, div, img, pre, text)
-import Html.Attributes exposing (class, href, id, src)
+import Html exposing (Html, a, article, button, div, footer, form, img, input, pre, text, textarea)
+import Html.Attributes exposing (class, href, id, name, src, type_)
 import Html.Events exposing (onClick)
 import List
+import Netlify exposing (netlify)
 import Octicons as Oct
 import Product exposing (Product(..))
+import VirtualDom
 
 
 
@@ -164,7 +166,16 @@ viewHeader =
 
 viewFooter : Html Msg
 viewFooter =
-    div [] [ text "work in progress..." ]
+    footer []
+        [ form [ name "contact", netlify "" ]
+            [ text "name:"
+            , input [ name "Name", type_ "text" ] []
+            , text "email:"
+            , input [ name "Email", type_ "text" ] []
+            , text "message:"
+            , textarea [ name "message" ] []
+            ]
+        ]
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
