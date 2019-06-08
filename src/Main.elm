@@ -5,6 +5,7 @@ import Html exposing (Html, a, article, button, div, img, pre, text)
 import Html.Attributes exposing (class, href, src)
 import Html.Events exposing (onClick)
 import List
+import Octicons as Oct
 import Product exposing (Product(..))
 
 
@@ -113,7 +114,8 @@ viewAboutme =
         [ img [ src "assets/icon/cj-bc.jpg" ] []
         , div [ class "aboutme-name" ] [ text "Cj.bc_sd a.k.a Cj-bc" ]
         , div [ class "aboutme-sns" ]
-            [ a [ href "https://github.com/Cj-bc" ] [ text "@Cj-bc" ]
+            [ Oct.markGithub Oct.defaultOptions
+            , a [ href "https://github.com/Cj-bc" ] [ text "@Cj-bc" ]
             , img [ src "assets/icon/twitter_blue.svg" ] []
             , a [ href "https://twitter.com/Cj_bc_sd" ] [ text "@Cj_bc_sd" ]
             ]
