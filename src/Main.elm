@@ -9,7 +9,6 @@ import List
 import Netlify exposing (netlify)
 import Octicons as Oct
 import Product exposing (Product(..))
-import VirtualDom
 
 
 
