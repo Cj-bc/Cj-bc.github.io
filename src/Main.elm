@@ -170,10 +170,12 @@ viewFav : Character -> Html Msg
 viewFav fav =
     case fav of
         Person dic ->
-            img [ src dic.pic, title dic.name ] []
+            input [ type_ "image", src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
 
         Character dic ->
-            img [ src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
+            input [ type_ "image", src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
+
+
 
 -- }}}
 -- viewCharacter : Character -> Html Msg {{{
