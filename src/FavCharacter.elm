@@ -36,3 +36,20 @@ type Character
         , comments : String
         , pic : SrcPath
         }
+
+
+
+
+me : Character
+me =
+    Person
+        { name = "Cj.bc_sd a.k.a Cj-bc"
+        , links =
+            [ Twitter "Cj_bc_sd"
+            , Other "Github" "https://github.com/Cj-bc"
+            , Other "Qiita" "https://qiita.com/Cj-bc"
+            ]
+        , details = " N odetails here"
+        , comments = "It's me! Obviously"
+        , pic = "assets/icon/cj-bc.jpg"
+        }
