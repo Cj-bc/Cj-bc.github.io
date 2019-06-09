@@ -49,16 +49,32 @@ init _ =
 
 
 
--- UPDATE
+-- }}}
+-- UPDATE {{{
 
 
 type Msg
     = ChangeTopic Topic
     | CharacterClicked Character
+    | HideCharacter
+
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model =
+    case msg of
+        ChangeTopic topic ->
+            ( { model | topic = topic }, Cmd.none )
+
+        CharacterClicked ch ->
+            ( { model | popupCh = Just ch }, Cmd.none )
+
+        HideCharacter ->
+            ( { model | popupCh = Nothing }, Cmd.none )
 
 
 
--- VIEW
+-- }}}
+-- VIEW {{{
 
 
 view : Model -> Browser.Document Msg
@@ -269,13 +285,6 @@ viewFooter =
         ]
 
 
-update : Msg -> Model -> ( Model, Cmd Msg )
-update msg model =
-    case msg of
-        ChangeTopic topic ->
-            ( { model | topic = topic }, Cmd.none )
 
-        CharacterClicked ch ->
-            ( { model | popupCh = Just ch }, Cmd.none )
 -- }}}
 -- }}}
