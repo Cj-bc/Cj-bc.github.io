@@ -4310,10 +4310,12 @@ function _Browser_load(url)
 		}
 	}));
 }
-var author$project$Main$Model = function (topic) {
-	return {topic: topic};
-};
+var author$project$Main$Model = F2(
+	function (topic, popupCh) {
+		return {popupCh: popupCh, topic: topic};
+	});
 var author$project$Main$Top = {$: 'Top'};
+var elm$core$Maybe$Nothing = {$: 'Nothing'};
 var elm$core$Basics$False = {$: 'False'};
 var elm$core$Basics$True = {$: 'True'};
 var elm$core$Result$isOk = function (result) {
@@ -4577,7 +4579,6 @@ var elm$core$Array$initialize = F2(
 var elm$core$Maybe$Just = function (a) {
 	return {$: 'Just', a: a};
 };
-var elm$core$Maybe$Nothing = {$: 'Nothing'};
 var elm$core$Result$Err = function (a) {
 	return {$: 'Err', a: a};
 };
@@ -4793,20 +4794,50 @@ var elm$core$Platform$Cmd$batch = _Platform_batch;
 var elm$core$Platform$Cmd$none = elm$core$Platform$Cmd$batch(_List_Nil);
 var author$project$Main$init = function (_n0) {
 	return _Utils_Tuple2(
-		author$project$Main$Model(author$project$Main$Top),
+		A2(author$project$Main$Model, author$project$Main$Top, elm$core$Maybe$Nothing),
 		elm$core$Platform$Cmd$none);
 };
 var author$project$Main$update = F2(
 	function (msg, model) {
-		var topic = msg.a;
-		return _Utils_Tuple2(
-			_Utils_update(
-				model,
-				{topic: topic}),
-			elm$core$Platform$Cmd$none);
+		if (msg.$ === 'ChangeTopic') {
+			var topic = msg.a;
+			return _Utils_Tuple2(
+				_Utils_update(
+					model,
+					{topic: topic}),
+				elm$core$Platform$Cmd$none);
+		} else {
+			var ch = msg.a;
+			return _Utils_Tuple2(
+				_Utils_update(
+					model,
+					{
+						popupCh: elm$core$Maybe$Just(ch)
+					}),
+				elm$core$Platform$Cmd$none);
+		}
 	});
-var capitalist$elm_octicons$Octicons$defaultOptions = {_class: elm$core$Maybe$Nothing, color: 'black', fillRule: 'evenodd', height: 16, margin: elm$core$Maybe$Nothing, style: elm$core$Maybe$Nothing, width: 16};
-var capitalist$elm_octicons$Octicons$markGithubPath = 'M8,0 C3.58,0 0,3.58 0,8 C0,11.54 2.29,14.53 5.47,15.59 C5.87,15.66 6.02,15.42 6.02,15.21 C6.02,15.02 6.01,14.39 6.01,13.72 C4,14.09 3.48,13.23 3.32,12.78 C3.23,12.55 2.84,11.84 2.5,11.65 C2.22,11.5 1.82,11.13 2.49,11.12 C3.12,11.11 3.57,11.7 3.72,11.94 C4.44,13.15 5.59,12.81 6.05,12.6 C6.12,12.08 6.33,11.73 6.56,11.53 C4.78,11.33 2.92,10.64 2.92,7.58 C2.92,6.71 3.23,5.99 3.74,5.43 C3.66,5.23 3.38,4.41 3.82,3.31 C3.82,3.31 4.49,3.1 6.02,4.13 C6.66,3.95 7.34,3.86 8.02,3.86 C8.7,3.86 9.38,3.95 10.02,4.13 C11.55,3.09 12.22,3.31 12.22,3.31 C12.66,4.41 12.38,5.23 12.3,5.43 C12.81,5.99 13.12,6.7 13.12,7.58 C13.12,10.65 11.25,11.33 9.47,11.53 C9.76,11.78 10.01,12.26 10.01,13.01 C10.01,14.08 10,14.94 10,15.21 C10,15.42 10.15,15.67 10.55,15.59 C13.71,14.53 16,11.53 16,8 C16,3.58 12.42,0 8,0 L8,0 Z';
+var author$project$FavCharacter$Fanbox = F2(
+	function (a, b) {
+		return {$: 'Fanbox', a: a, b: b};
+	});
+var author$project$FavCharacter$Marshmallow = function (a) {
+	return {$: 'Marshmallow', a: a};
+};
+var author$project$FavCharacter$Other = F2(
+	function (a, b) {
+		return {$: 'Other', a: a, b: b};
+	});
+var author$project$FavCharacter$Person = function (a) {
+	return {$: 'Person', a: a};
+};
+var author$project$FavCharacter$Twitter = function (a) {
+	return {$: 'Twitter', a: a};
+};
+var author$project$FavCharacter$Youtube = F2(
+	function (a, b) {
+		return {$: 'Youtube', a: a, b: b};
+	});
 var elm$core$List$foldrHelper = F4(
 	function (fn, acc, ctr, ls) {
 		if (!ls.b) {
@@ -4862,6 +4893,171 @@ var elm$core$List$foldr = F3(
 	function (fn, acc, ls) {
 		return A4(elm$core$List$foldrHelper, fn, acc, 0, ls);
 	});
+var elm$core$List$intersperse = F2(
+	function (sep, xs) {
+		if (!xs.b) {
+			return _List_Nil;
+		} else {
+			var hd = xs.a;
+			var tl = xs.b;
+			var step = F2(
+				function (x, rest) {
+					return A2(
+						elm$core$List$cons,
+						sep,
+						A2(elm$core$List$cons, x, rest));
+				});
+			var spersed = A3(elm$core$List$foldr, step, _List_Nil, tl);
+			return A2(elm$core$List$cons, hd, spersed);
+		}
+	});
+var author$project$FavCharacter$unlines = function (xs) {
+	return A3(
+		elm$core$List$foldr,
+		elm$core$Basics$append,
+		'',
+		A2(elm$core$List$intersperse, '\n', xs));
+};
+var author$project$FavCharacter$characters = _List_fromArray(
+	[
+		author$project$FavCharacter$Person(
+		{
+			comments: author$project$FavCharacter$unlines(
+				_List_fromArray(
+					['とにかく超絶かわいいバ美肉元祖。', 'バ美肉という概念をこの世に生み出してしまった元凶。彼女のおかげでどれだけの人の性癖が歪められたことか...', '数少ない「ボイスチェンジャー適合者」であり、初めてボイチェンをかけた時からかわいい女の子の声にしか聞こえないという神がかった声を持つおじさんである。', '本職は絵師(神絵師)だがVtuberとなったことで、ボイチェンの調整をし始め音屋さん並みに音響の話をする。', '魂のukyoさんは数年間もの生放送歴を持つベテランなのでめちゃくちゃ楽しい。普通に配信者としての面白さが半端ない。', 'また、本職がクリエイターなのもあり、「コンテンツ」に対する考え方は尊敬に値する。というかそこだけじゃなく全てにおいてめっちゃ尊敬してますあのすごい'])),
+			details: '『バーチャルボイスチェンジお絵かきYoutuber魔王おじさんです。』',
+			links: _List_fromArray(
+				[
+					author$project$FavCharacter$Twitter('ukyo_rst'),
+					A2(author$project$FavCharacter$Youtube, 'まぐろなちゃんねる', 'https://www.youtube.com/channel/UCPf-EnX70UM7jqjKwhDmS8g'),
+					author$project$FavCharacter$Marshmallow('ukyo_rst'),
+					A2(author$project$FavCharacter$Fanbox, 'ukyo_rst', 'https://www.pixiv.net/fanbox/creator/169083'),
+					A2(author$project$FavCharacter$Other, 'ukyoさんWiki', 'https://dic.nicovideo.jp/a/ukyo%20rst')
+				]),
+			name: '魔王マグロナ',
+			pic: 'https://yt3.ggpht.com/a/AGF-l7-nbjPwvmOOyrp7KlRKX9Xh5oiInNQFOSWCIg=s288-mo-c-c0xffffffff-rj-k-no'
+		}),
+		author$project$FavCharacter$Person(
+		{
+			comments: author$project$FavCharacter$unlines(
+				_List_fromArray(
+					['ロリ系バ美肉おじさんの筆頭。', 'まぐろなちゃんの次くらいに出現した「ボイチェン適合者」。その可愛い声とあざとい仕草は人々を捉えて離さない。', 'まぐろなちゃんの力でボイチェンが進化している「子供部屋」メンバーの一人。', 'まぐろなちゃんと同じく本職は絵師。', 'ukyoさん(まぐろなちゃんの魂)の配信の古参リスナーであり、ukyoさんをとても尊敬していた。絵師になったのもその影響のようである。かつて尊敬したukyoさんと今や仲良くコラボ配信等を行なっており、とても幸せそうでファンとしては本当に嬉しい。ちなみにまぐろなちゃんの(ukyoさんの)家と徒歩数分圏内に住んでいる。てぇてぇな。', '普段は所謂「メスガキ」ムーヴでイキリ散らかしているが、コンテンツへの考え方等しっかりしてるところはしっかりしており、とても安心できる。'])),
+			details: '『ボイチェンVTuberの兎鞠（とまり）まりです お菓子とげーむだいすき！』',
+			links: _List_fromArray(
+				[
+					author$project$FavCharacter$Twitter('tomari_mari'),
+					A2(author$project$FavCharacter$Youtube, 'Tomari Mari channel/兎鞠まりちゃんねる', 'https://www.youtube.com/channel/UCkPIfBOLoO0hVPG-tI2YeGg'),
+					author$project$FavCharacter$Marshmallow('tomari_mari'),
+					A2(author$project$FavCharacter$Fanbox, '兎鞠まり', 'https://www.pixiv.net/fanbox/creator/33648062'),
+					A2(author$project$FavCharacter$Other, 'Booth', 'tomari-mari.booth.pm'),
+					A2(author$project$FavCharacter$Other, 'OpenREC', 'https://www.openrec.tv/user/tomari_mari')
+				]),
+			name: '兎鞠まり',
+			pic: 'https://yt3.ggpht.com/a/AGF-l78KDm0T_7A0Kf9Fy9Z1nIgAYlyBr0IJ8sNprQ=s288-mo-c-c0xffffffff-rj-k-no'
+		})
+	]);
+var author$project$Main$CharacterClicked = function (a) {
+	return {$: 'CharacterClicked', a: a};
+};
+var elm$core$Basics$identity = function (x) {
+	return x;
+};
+var elm$json$Json$Decode$map = _Json_map1;
+var elm$json$Json$Decode$map2 = _Json_map2;
+var elm$json$Json$Decode$succeed = _Json_succeed;
+var elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
+	switch (handler.$) {
+		case 'Normal':
+			return 0;
+		case 'MayStopPropagation':
+			return 1;
+		case 'MayPreventDefault':
+			return 2;
+		default:
+			return 3;
+	}
+};
+var elm$html$Html$img = _VirtualDom_node('img');
+var elm$json$Json$Encode$string = _Json_wrap;
+var elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			elm$json$Json$Encode$string(string));
+	});
+var elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var elm$html$Html$Attributes$title = elm$html$Html$Attributes$stringProperty('title');
+var elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 'Normal', a: a};
+};
+var elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			elm$virtual_dom$VirtualDom$on,
+			event,
+			elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		elm$html$Html$Events$on,
+		'click',
+		elm$json$Json$Decode$succeed(msg));
+};
+var author$project$Main$viewFav = function (fav) {
+	if (fav.$ === 'Person') {
+		var dic = fav.a;
+		return A2(
+			elm$html$Html$img,
+			_List_fromArray(
+				[
+					elm$html$Html$Attributes$src(dic.pic),
+					elm$html$Html$Attributes$title(dic.name)
+				]),
+			_List_Nil);
+	} else {
+		var dic = fav.a;
+		return A2(
+			elm$html$Html$img,
+			_List_fromArray(
+				[
+					elm$html$Html$Attributes$src(dic.pic),
+					elm$html$Html$Attributes$title(dic.name),
+					elm$html$Html$Events$onClick(
+					author$project$Main$CharacterClicked(fav))
+				]),
+			_List_Nil);
+	}
+};
+var elm$core$List$map = F2(
+	function (f, xs) {
+		return A3(
+			elm$core$List$foldr,
+			F2(
+				function (x, acc) {
+					return A2(
+						elm$core$List$cons,
+						f(x),
+						acc);
+				}),
+			_List_Nil,
+			xs);
+	});
+var elm$html$Html$div = _VirtualDom_node('div');
+var author$project$Main$viewFavs = function (favs) {
+	return A2(
+		elm$html$Html$div,
+		_List_Nil,
+		A2(elm$core$List$map, author$project$Main$viewFav, favs));
+};
+var capitalist$elm_octicons$Octicons$defaultOptions = {_class: elm$core$Maybe$Nothing, color: 'black', fillRule: 'evenodd', height: 16, margin: elm$core$Maybe$Nothing, style: elm$core$Maybe$Nothing, width: 16};
+var capitalist$elm_octicons$Octicons$markGithubPath = 'M8,0 C3.58,0 0,3.58 0,8 C0,11.54 2.29,14.53 5.47,15.59 C5.87,15.66 6.02,15.42 6.02,15.21 C6.02,15.02 6.01,14.39 6.01,13.72 C4,14.09 3.48,13.23 3.32,12.78 C3.23,12.55 2.84,11.84 2.5,11.65 C2.22,11.5 1.82,11.13 2.49,11.12 C3.12,11.11 3.57,11.7 3.72,11.94 C4.44,13.15 5.59,12.81 6.05,12.6 C6.12,12.08 6.33,11.73 6.56,11.53 C4.78,11.33 2.92,10.64 2.92,7.58 C2.92,6.71 3.23,5.99 3.74,5.43 C3.66,5.23 3.38,4.41 3.82,3.31 C3.82,3.31 4.49,3.1 6.02,4.13 C6.66,3.95 7.34,3.86 8.02,3.86 C8.7,3.86 9.38,3.95 10.02,4.13 C11.55,3.09 12.22,3.31 12.22,3.31 C12.66,4.41 12.38,5.23 12.3,5.43 C12.81,5.99 13.12,6.7 13.12,7.58 C13.12,10.65 11.25,11.33 9.47,11.53 C9.76,11.78 10.01,12.26 10.01,13.01 C10.01,14.08 10,14.94 10,15.21 C10,15.42 10.15,15.67 10.55,15.59 C13.71,14.53 16,11.53 16,8 C16,3.58 12.42,0 8,0 L8,0 Z';
 var elm$core$List$append = F2(
 	function (xs, ys) {
 		if (!ys.b) {
@@ -4882,24 +5078,6 @@ var elm$core$Maybe$withDefault = F2(
 			return _default;
 		}
 	});
-var elm$core$Basics$identity = function (x) {
-	return x;
-};
-var elm$json$Json$Decode$map = _Json_map1;
-var elm$json$Json$Decode$map2 = _Json_map2;
-var elm$json$Json$Decode$succeed = _Json_succeed;
-var elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
-	switch (handler.$) {
-		case 'Normal':
-			return 0;
-		case 'MayStopPropagation':
-			return 1;
-		case 'MayPreventDefault':
-			return 2;
-		default:
-			return 3;
-	}
-};
 var elm$svg$Svg$trustedNode = _VirtualDom_nodeNS('http://www.w3.org/2000/svg');
 var elm$svg$Svg$svg = elm$svg$Svg$trustedNode('svg');
 var elm$svg$Svg$Attributes$class = _VirtualDom_attribute('class');
@@ -4993,18 +5171,8 @@ var capitalist$elm_octicons$Octicons$pathIconWithOptions = F4(
 	});
 var capitalist$elm_octicons$Octicons$markGithub = A3(capitalist$elm_octicons$Octicons$pathIconWithOptions, capitalist$elm_octicons$Octicons$markGithubPath, '0 0 16 16', 'markGithub');
 var elm$html$Html$a = _VirtualDom_node('a');
-var elm$html$Html$div = _VirtualDom_node('div');
-var elm$html$Html$img = _VirtualDom_node('img');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
-var elm$json$Json$Encode$string = _Json_wrap;
-var elm$html$Html$Attributes$stringProperty = F2(
-	function (key, string) {
-		return A2(
-			_VirtualDom_property,
-			key,
-			elm$json$Json$Encode$string(string));
-	});
 var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
 var elm$html$Html$Attributes$href = function (url) {
 	return A2(
@@ -5013,12 +5181,6 @@ var elm$html$Html$Attributes$href = function (url) {
 		_VirtualDom_noJavaScriptUri(url));
 };
 var elm$html$Html$Attributes$id = elm$html$Html$Attributes$stringProperty('id');
-var elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
-};
 var author$project$Main$viewAboutme = A2(
 	elm$html$Html$div,
 	_List_fromArray(
@@ -5091,7 +5253,8 @@ var author$project$Main$viewAboutme = A2(
 			_List_fromArray(
 				[
 					elm$html$Html$text('hoge')
-				]))
+				])),
+			author$project$Main$viewFavs(author$project$FavCharacter$characters)
 		]));
 var author$project$Main$viewBlog = A2(
 	elm$html$Html$div,
@@ -5100,6 +5263,58 @@ var author$project$Main$viewBlog = A2(
 		[
 			elm$html$Html$text('work in progress...')
 		]));
+var elm$html$Html$pre = _VirtualDom_node('pre');
+var author$project$Main$viewCharacter = function (ch) {
+	if (ch.$ === 'Person') {
+		var dic = ch.a;
+		return A2(
+			elm$html$Html$div,
+			_List_Nil,
+			_List_fromArray(
+				[
+					A2(
+					elm$html$Html$img,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$src(dic.pic),
+							elm$html$Html$Attributes$title(dic.name)
+						]),
+					_List_Nil),
+					elm$html$Html$text(dic.name),
+					A2(
+					elm$html$Html$pre,
+					_List_Nil,
+					_List_fromArray(
+						[
+							elm$html$Html$text(dic.details)
+						]))
+				]));
+	} else {
+		var dic = ch.a;
+		return A2(
+			elm$html$Html$div,
+			_List_Nil,
+			_List_fromArray(
+				[
+					A2(
+					elm$html$Html$img,
+					_List_fromArray(
+						[
+							elm$html$Html$Attributes$src(dic.pic),
+							elm$html$Html$Attributes$title(dic.name)
+						]),
+					_List_Nil),
+					elm$html$Html$text(dic.name),
+					A2(
+					elm$html$Html$pre,
+					_List_Nil,
+					_List_fromArray(
+						[
+							elm$html$Html$text(dic.details)
+						]))
+				]));
+	}
+};
 var elm$virtual_dom$VirtualDom$attribute = F2(
 	function (key, value) {
 		return A2(
@@ -5225,23 +5440,6 @@ var author$project$Main$ChangeTopic = function (a) {
 };
 var author$project$Main$Products = {$: 'Products'};
 var author$project$Main$Projects = {$: 'Projects'};
-var elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
-};
-var elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var elm$html$Html$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			elm$virtual_dom$VirtualDom$on,
-			event,
-			elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var elm$html$Html$Events$onClick = function (msg) {
-	return A2(
-		elm$html$Html$Events$on,
-		'click',
-		elm$json$Json$Decode$succeed(msg));
-};
 var author$project$Main$viewHeader = A2(
 	elm$html$Html$div,
 	_List_Nil,
@@ -5325,7 +5523,13 @@ var author$project$Main$view = function (model) {
 			case 'Top':
 				return author$project$Main$viewTop;
 			case 'Aboutme':
-				return author$project$Main$viewAboutme;
+				var _n2 = model.popupCh;
+				if (_n2.$ === 'Nothing') {
+					return author$project$Main$viewAboutme;
+				} else {
+					var ch = _n2.a;
+					return author$project$Main$viewCharacter(ch);
+				}
 			case 'Products':
 				return author$project$Main$viewProducts;
 			case 'Projects':
@@ -5378,20 +5582,6 @@ var elm$core$Task$Perform = function (a) {
 };
 var elm$core$Task$succeed = _Scheduler_succeed;
 var elm$core$Task$init = elm$core$Task$succeed(_Utils_Tuple0);
-var elm$core$List$map = F2(
-	function (f, xs) {
-		return A3(
-			elm$core$List$foldr,
-			F2(
-				function (x, acc) {
-					return A2(
-						elm$core$List$cons,
-						f(x),
-						acc);
-				}),
-			_List_Nil,
-			xs);
-	});
 var elm$core$Task$andThen = _Scheduler_andThen;
 var elm$core$Task$map = F2(
 	function (func, taskA) {

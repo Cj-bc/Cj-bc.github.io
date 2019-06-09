@@ -1,8 +1,9 @@
 module Main exposing (main)
 
 import Browser
+import FavCharacter exposing (Character(..))
 import Html exposing (Html, a, article, button, div, footer, form, img, input, label, p, pre, text, textarea)
-import Html.Attributes exposing (class, for, href, id, name, src, type_)
+import Html.Attributes exposing (class, for, href, id, name, src, title, type_)
 import Html.Events exposing (onClick)
 import List
 import Netlify exposing (netlify)
@@ -39,12 +40,13 @@ type Topic
 
 type alias Model =
     { topic : Topic
+    , popupCh : Maybe Character
     }
 
 
 init : flags -> ( Model, Cmd Msg )
 init _ =
-    ( Model Top, Cmd.none )
+    ( Model Top Nothing, Cmd.none )
 
 
 
@@ -53,6 +55,7 @@ init _ =
 
 type Msg
     = ChangeTopic Topic
+    | CharacterClicked Character
 
 
 
@@ -85,7 +88,12 @@ view model =
                     viewTop
 
                 Aboutme ->
-                    viewAboutme
+                    case model.popupCh of
+                        Nothing ->
+                            viewAboutme
+
+                        Just ch ->
+                            viewCharacter ch
 
                 Products ->
                     viewProducts
@@ -123,7 +131,41 @@ viewAboutme =
             ]
         , div [ class "aboutme-details" ]
             [ text "hoge" ]
+        , viewFavs FavCharacter.characters
         ]
+
+
+viewFavs : List Character -> Html Msg
+viewFavs favs =
+    div [] (List.map viewFav favs)
+
+
+viewFav : Character -> Html Msg
+viewFav fav =
+    case fav of
+        Person dic ->
+            img [ src dic.pic, title dic.name ] []
+
+        Character dic ->
+            img [ src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
+
+
+viewCharacter : Character -> Html Msg
+viewCharacter ch =
+    case ch of
+        Person dic ->
+            div []
+                [ img [ src dic.pic, title dic.name ] []
+                , text dic.name
+                , pre [] [ text dic.details ]
+                ]
+
+        Character dic ->
+            div []
+                [ img [ src dic.pic, title dic.name ] []
+                , text dic.name
+                , pre [] [ text dic.details ]
+                ]
 
 
 viewProducts : Html Msg
@@ -191,3 +233,6 @@ update msg model =
     case msg of
         ChangeTopic topic ->
             ( { model | topic = topic }, Cmd.none )
+
+        CharacterClicked ch ->
+            ( { model | popupCh = Just ch }, Cmd.none )
