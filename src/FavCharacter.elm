@@ -9,7 +9,7 @@ type alias Url =
     String
 
 
-type Sns
+type Link
     = Twitter Name
     | Github Name
     | Youtube Name Url
@@ -29,7 +29,7 @@ type Character
         }
     | Person
         { name : String
-        , sns : Lst Sns
+        , links : List Link
         , details : String
         , comments : String
         , pic : SrcPath
