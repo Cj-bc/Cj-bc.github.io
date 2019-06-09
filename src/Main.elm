@@ -103,12 +103,7 @@ view model =
                     viewTop
 
                 Aboutme ->
-                    case model.popupCh of
-                        Nothing ->
-                            viewAboutme
-
-                        Just ch ->
-                            viewCharacter ch
+                    viewAboutme model
 
                 Products ->
                     viewProducts
@@ -128,27 +123,43 @@ view model =
     }
 
 
+
+-- viewTop : Html Msg {{{
+
+
 viewTop : Html Msg
 viewTop =
     div [] [ text "nothing here yet" ]
 
 
-viewAboutme : Html Msg
-viewAboutme =
-    div [ class "topic-aboutme" ]
-        [ img [ src "assets/icon/cj-bc.jpg" ] []
-        , div [ class "aboutme-name" ] [ text "Cj.bc_sd a.k.a Cj-bc" ]
-        , div [ class "aboutme-sns" ]
-            [ Oct.markGithub Oct.defaultOptions
-            , a [ href "https://github.com/Cj-bc" ] [ text "@Cj-bc" ]
-            , img [ id "twitter-logo", src "assets/icon/twitter_blue.svg" ] []
-            , a [ href "https://twitter.com/Cj_bc_sd" ] [ text "@Cj_bc_sd" ]
-            ]
-        , div [ class "aboutme-details" ]
-            [ text "hoge" ]
-        , viewFavs FavCharacter.characters
-        ]
 
+--- }}}
+-- viewAboutme : Model -> Html Msg {{{
+
+
+viewAboutme : Model -> Html Msg
+viewAboutme model =
+    let
+        base =
+            [ img [ src "assets/icon/cj-bc.jpg" ] []
+            , div [ class "aboutme-name" ] [ text "Cj.bc_sd a.k.a Cj-bc" ]
+            , div [ class "aboutme-sns" ]
+                [ Oct.markGithub Oct.defaultOptions
+                , a [ href "https://github.com/Cj-bc" ] [ text "@Cj-bc" ]
+                , img [ id "twitter-logo", src "assets/icon/twitter_blue.svg" ] []
+                , a [ href "https://twitter.com/Cj_bc_sd" ] [ text "@Cj_bc_sd" ]
+                ]
+            , div [ class "aboutme-details" ]
+                [ text "hoge" ]
+            , viewFavs FavCharacter.characters
+            ]
+    in
+    case model.popupCh of
+        Nothing ->
+            div [ class "topic-aboutme" ] base
+
+        Just character ->
+            div [ class "topic-aboutme" ] (List.append base [ viewCharacter character ])
 
 
 
