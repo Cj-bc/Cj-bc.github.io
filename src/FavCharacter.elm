@@ -14,6 +14,8 @@ type Link
     | Github Name
     | Youtube Name Url
     | Marshmallow Name
+    | Fanbox Name Url
+    | Other String Url
 
 
 type alias SrcPath =
