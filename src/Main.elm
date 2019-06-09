@@ -26,7 +26,7 @@ main =
 
 
 
--- MODEL
+-- MODEL {{{
 
 
 type Topic
@@ -134,9 +134,20 @@ viewAboutme =
         ]
 
 
+
+
+-- }}}
+-- viewFavs : List Character -> Html Msg {{{
+
+
 viewFavs : List Character -> Html Msg
 viewFavs favs =
     div [] (List.map viewFav favs)
+
+
+
+-- }}}
+-- viewFav : Character -> Html Msg {{{
 
 
 viewFav : Character -> Html Msg
@@ -147,6 +158,9 @@ viewFav fav =
 
         Character dic ->
             img [ src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
+
+-- }}}
+-- viewCharacter : Character -> Html Msg {{{
 
 
 viewCharacter : Character -> Html Msg
@@ -167,13 +181,20 @@ viewCharacter ch =
                 ]
 
 
+
+-- }}}
+-- viewProducts : Html Msg {{{
+
+
 viewProducts : Html Msg
 viewProducts =
     text "hoge"
 
 
 
+-- }}}
 --    div [] (List.map viewProduct products)
+-- viewProduct : Product -> Html Msg {{{
 
 
 viewProduct : Product -> Html Msg
@@ -184,14 +205,29 @@ viewProduct (Product name url desc) =
         ]
 
 
+
+-- }}}
+--- viewProjects : Html Msg {{{
+
+
 viewProjects : Html Msg
 viewProjects =
     div [] [ text "work in progress..." ]
 
 
+
+-- }}}
+-- viewBlog : Html Msg {{{
+
+
 viewBlog : Html Msg
 viewBlog =
     div [] [ text "work in progress..." ]
+
+
+
+-- }}}
+-- viewHeader : Html Msg {{{
 
 
 viewHeader : Html Msg
@@ -203,6 +239,11 @@ viewHeader =
         , button [ onClick (ChangeTopic Products) ] [ text "Products" ]
         , button [ onClick (ChangeTopic Blog) ] [ text "Blog" ]
         ]
+
+
+
+-- }}}
+-- viewFooter : Html Msg {{{
 
 
 viewFooter : Html Msg
@@ -235,3 +276,5 @@ update msg model =
 
         CharacterClicked ch ->
             ( { model | popupCh = Just ch }, Cmd.none )
+-- }}}
+-- }}}
