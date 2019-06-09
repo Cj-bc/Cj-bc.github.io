@@ -168,7 +168,8 @@ viewCharacter ch =
     case ch of
         Person dic ->
             div []
-                [ img [ src dic.pic, title dic.name ] []
+                [ button [ onClick HideCharacter ] [ text "x" ]
+                , img [ src dic.pic, title dic.name ] []
                 , text dic.name
                 , pre [] [ text dic.details ]
                 ]
