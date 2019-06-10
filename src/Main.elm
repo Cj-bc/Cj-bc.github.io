@@ -178,7 +178,11 @@ viewFavs favs =
 
 
 viewFav : Character -> Html Msg
-viewFav (Character dic) =
+viewFav fav =
+    let
+        (Character dic) =
+            fav
+    in
     input [ class "fav-selectIcon", type_ "image", src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
 
 
