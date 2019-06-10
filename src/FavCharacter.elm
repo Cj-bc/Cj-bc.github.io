@@ -1,4 +1,4 @@
-module FavCharacter exposing (Character(..), Link(..), characters)
+module FavCharacter exposing (Character(..), Link(..), characters, me)
 
 import List
 
@@ -36,13 +36,6 @@ type Character
         , comments : String
         , pic : SrcPath
         }
-    | Person
-        { name : String
-        , links : List Link
-        , details : String
-        , comments : String
-        , pic : SrcPath
-        }
 
 
 unlines : List String -> String
@@ -52,7 +45,7 @@ unlines xs =
 
 characters : List Character
 characters =
-    [ Person
+    [ Character
         { name = "魔王マグロナ"
         , links =
             [ Twitter "ukyo_rst"
@@ -73,7 +66,7 @@ characters =
                 ]
         , pic = "https://yt3.ggpht.com/a/AGF-l7-nbjPwvmOOyrp7KlRKX9Xh5oiInNQFOSWCIg=s288-mo-c-c0xffffffff-rj-k-no"
         }
-    , Person
+    , Character
         { name = "兎鞠まり"
         , links =
             [ Twitter "tomari_mari"
@@ -100,11 +93,11 @@ characters =
 
 me : Character
 me =
-    Person
+    Character
         { name = "Cj.bc_sd a.k.a Cj-bc"
         , links =
             [ Twitter "Cj_bc_sd"
-            , Other "Github" "https://github.com/Cj-bc"
+            , Github "Cj-bc"
             , Other "Qiita" "https://qiita.com/Cj-bc"
             ]
         , details = " N odetails here"

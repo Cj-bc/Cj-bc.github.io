@@ -141,17 +141,15 @@ viewTop =
 viewAboutme : Model -> Html Msg
 viewAboutme model =
     let
+        (Character dic) =
+            FavCharacter.me
+
         base =
-            [ img [ src "assets/icon/cj-bc.jpg" ] []
-            , div [ class "aboutme-name" ] [ text "Cj.bc_sd a.k.a Cj-bc" ]
-            , div [ class "aboutme-sns" ]
-                [ Oct.markGithub Oct.defaultOptions
-                , a [ href "https://github.com/Cj-bc" ] [ text "@Cj-bc" ]
-                , img [ id "twitter-logo", src "assets/icon/twitter_blue.svg" ] []
-                , a [ href "https://twitter.com/Cj_bc_sd" ] [ text "@Cj_bc_sd" ]
-                ]
-            , div [ class "aboutme-details" ]
-                [ text "hoge" ]
+            [ img [ src dic.pic, title dic.name ] []
+            , text dic.name
+            , div [ class "character-links" ] (List.map viewLink dic.links)
+            , pre [ class "character-details" ] [ text dic.details ]
+            , pre [ class "character-comments" ] [ text dic.comments ]
             , viewFavs FavCharacter.characters
             ]
     in
@@ -179,13 +177,8 @@ viewFavs favs =
 
 
 viewFav : Character -> Html Msg
-viewFav fav =
-    case fav of
-        Person dic ->
-            input [ type_ "image", src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
-
-        Character dic ->
-            input [ type_ "image", src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
+viewFav (Character dic) =
+    input [ class "fav-selectIcon", type_ "image", src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
 
 
 
@@ -195,27 +188,15 @@ viewFav fav =
 
 
 viewCharacter : Character -> Html Msg
-viewCharacter ch =
-    case ch of
-        Person dic ->
-            div []
-                [ button [ onClick HideCharacter ] [ text "x" ]
-                , img [ src dic.pic, title dic.name ] []
-                , text dic.name
-                , div [] (List.map viewLink dic.links)
-                , pre [] [ text dic.details ]
-                , pre [] [ text dic.comments ]
-                ]
-
-        Character dic ->
-            div []
-                [ button [ onClick HideCharacter ] [ text "x" ]
-                , img [ src dic.pic, title dic.name ] []
-                , text dic.name
-                , div [] (List.map viewLink dic.links)
-                , pre [] [ text dic.details ]
-                , pre [] [ text dic.comments ]
-                ]
+viewCharacter (Character dic) =
+    div [ class "character" ]
+        [ button [ onClick HideCharacter ] [ text "x" ]
+        , img [ src dic.pic, title dic.name ] []
+        , text dic.name
+        , div [ class "character-links" ] (List.map viewLink dic.links)
+        , pre [ class "character-details" ] [ text dic.details ]
+        , pre [ class "character-comments" ] [ text dic.comments ]
+        ]
 
 
 
