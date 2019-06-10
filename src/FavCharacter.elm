@@ -31,6 +31,7 @@ type alias SrcPath =
 type Character
     = Character
         { name : String
+        , links : List Link
         , details : String
         , comments : String
         , pic : SrcPath
