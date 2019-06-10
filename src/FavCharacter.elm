@@ -1,4 +1,4 @@
-module FavCharacter exposing (Character(..), Link, characters)
+module FavCharacter exposing (Character(..), Link(..), characters)
 
 import List
 
@@ -11,12 +11,16 @@ type alias Url =
     String
 
 
+type alias Id =
+    String
+
+
 type Link
     = Twitter Name
     | Github Name
-    | Youtube Name Url
+    | Youtube Name Id
     | Marshmallow Name
-    | Fanbox Name Url
+    | Fanbox Name Id
     | Other String Url
 
 
@@ -51,9 +55,9 @@ characters =
         { name = "魔王マグロナ"
         , links =
             [ Twitter "ukyo_rst"
-            , Youtube "まぐろなちゃんねる" "https://www.youtube.com/channel/UCPf-EnX70UM7jqjKwhDmS8g"
+            , Youtube "まぐろなちゃんねる" "UCPf-EnX70UM7jqjKwhDmS8g"
             , Marshmallow "ukyo_rst"
-            , Fanbox "ukyo_rst" "https://www.pixiv.net/fanbox/creator/169083"
+            , Fanbox "ukyo_rst" "169083"
             , Other "ukyoさんWiki" "https://dic.nicovideo.jp/a/ukyo%20rst"
             ]
         , details = "『バーチャルボイスチェンジお絵かきYoutuber魔王おじさんです。』"
@@ -72,9 +76,9 @@ characters =
         { name = "兎鞠まり"
         , links =
             [ Twitter "tomari_mari"
-            , Youtube "Tomari Mari channel/兎鞠まりちゃんねる" "https://www.youtube.com/channel/UCkPIfBOLoO0hVPG-tI2YeGg"
+            , Youtube "Tomari Mari channel/兎鞠まりちゃんねる" "UCkPIfBOLoO0hVPG-tI2YeGg"
             , Marshmallow "tomari_mari"
-            , Fanbox "兎鞠まり" "https://www.pixiv.net/fanbox/creator/33648062"
+            , Fanbox "兎鞠まり" "33648062"
             , Other "Booth" "tomari-mari.booth.pm"
             , Other "OpenREC" "https://www.openrec.tv/user/tomari_mari"
             ]
