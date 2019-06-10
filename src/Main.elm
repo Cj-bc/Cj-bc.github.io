@@ -130,7 +130,8 @@ view model =
 
 viewTop : Html Msg
 viewTop =
-    div [] [ text "nothing here yet" ]
+    div []
+        [ text "nothing here yet" ]
 
 
 
@@ -168,7 +169,7 @@ viewAboutme model =
 
 viewFavs : List Character -> Html Msg
 viewFavs favs =
-    div [] (List.map viewFav favs)
+    div [ class "aboutme-favs" ] (List.map viewFav favs)
 
 
 
@@ -238,29 +239,28 @@ viewLink : Link -> Html Msg
 viewLink ln =
     case ln of
         Twitter name ->
-            a [ href ("https://twitter.com/" ++ name) ]
+            a [ class "link-twitter", href ("https://twitter.com/" ++ name) ]
                 [ img [ id "twitter-logo", src "assets/icon/twitter_blue.svg", title name ] []
                 ]
 
         Github name ->
-            a [ href ("https://github.com/" ++ name) ]
+            a [ class "link-github", href ("https://github.com/" ++ name) ]
                 [ Oct.markGithub Oct.defaultOptions
-                , text name
                 ]
 
         Youtube name id ->
             div [ class "g-ytsubscribe", dataChannelid id, dataLayout "default", dataCount "default" ] []
 
         Marshmallow name ->
-            a [ href ("https://marshmallow-qa.com/" ++ name) ]
+            a [ class "link-marshmallow", href ("https://marshmallow-qa.com/" ++ name) ]
                 [ img [ id "marshmallow-logo", src "https://pbs.twimg.com/profile_images/938296751437615104/vi3FxQJ7_400x400.jpg", title ("マシュマロ: " ++ name) ] [] ]
 
         Fanbox name id ->
-            a [ href ("https://www.pixiv.net/fanbox/creator/" ++ id) ]
+            a [ class "link-fanbox", href ("https://www.pixiv.net/fanbox/creator/" ++ id) ]
                 [ text ("fanbox: " ++ name) ]
 
         Other name url ->
-            a [ href url ]
+            a [ class "link-other", href url ]
                 [ img [ id "other-logo", src "assets/icon/other_logo.svg", title name ] [] ]
 
 
