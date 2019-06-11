@@ -125,13 +125,23 @@ view model =
 
 
 
+-- viewWIP : Html Msg {{{
+
+
+viewWIP : Html Msg
+viewWIP =
+    div [ class "WIP" ]
+        [ text "Work in progress..." ]
+
+
+
+-- }}}
 -- viewTop : Html Msg {{{
 
 
 viewTop : Html Msg
 viewTop =
-    div []
-        [ text "nothing here yet" ]
+    viewWIP
 
 
 
@@ -280,7 +290,7 @@ viewLink ln =
 
 viewProducts : Html Msg
 viewProducts =
-    text "hoge"
+    viewWIP
 
 
 
@@ -304,7 +314,7 @@ viewProduct (Product name url desc) =
 
 viewProjects : Html Msg
 viewProjects =
-    div [] [ text "work in progress..." ]
+    viewWIP
 
 
 
@@ -314,10 +324,11 @@ viewProjects =
 
 viewBlog : Html Msg
 viewBlog =
-    div [] [ text "work in progress..." ]
+    viewWIP
 
 
 
+--    div [] [ text "work in progress..." ]
 -- }}}
 -- viewHeader : Html Msg {{{
 
