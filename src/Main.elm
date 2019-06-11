@@ -252,9 +252,14 @@ viewLink ln =
                 [ Oct.markGithub Oct.defaultOptions
                 ]
 
-        Youtube name id ->
-            div [ class "g-ytsubscribe", dataChannelid id, dataLayout "default", dataCount "default" ] []
+        Youtube name id_ ->
+            a [ class "link-youtube", href ("https://youtube.com/channel/" ++ id_) ]
+                [ img [ id "youtube-logo", src "assets/icon/youtube.svg", title name ] [] ]
 
+        --                div
+        --                [ class "g-ytsubscribe", dataChannelid id, dataLayout "default", dataCount "default" ]
+        --                []
+        --
         Marshmallow name ->
             a [ class "link-marshmallow", href ("https://marshmallow-qa.com/" ++ name) ]
                 [ img [ id "marshmallow-logo", src "https://pbs.twimg.com/profile_images/938296751437615104/vi3FxQJ7_400x400.jpg", title ("マシュマロ: " ++ name) ] [] ]
