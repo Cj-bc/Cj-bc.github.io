@@ -1,4 +1,4 @@
-module Main exposing (main)
+port module Main exposing (main)
 
 import Browser
 import FavCharacter exposing (Character(..), Link(..))
@@ -10,6 +10,9 @@ import Netlify exposing (netlify)
 import Octicons as Oct
 import Product exposing (Product(..))
 import VirtualDom
+
+
+port renderYouTubeButton : () -> Cmd msg
 
 
 
@@ -67,7 +70,7 @@ update msg model =
             ( { model | topic = topic }, Cmd.none )
 
         CharacterClicked ch ->
-            ( { model | popupCh = Just ch }, Cmd.none )
+            ( { model | popupCh = Just ch }, renderYouTubeButton () )
 
         HideCharacter ->
             ( { model | popupCh = Nothing }, Cmd.none )
@@ -263,13 +266,10 @@ viewLink ln =
                 ]
 
         Youtube name id_ ->
-            a [ class "link-youtube", href ("https://youtube.com/channel/" ++ id_) ]
-                [ img [ id "youtube-logo", src "assets/icon/youtube.svg", title name ] [] ]
+            div
+                [ class "g-ytsubscribe", dataChannelid id_, dataLayout "default", dataCount "default" ]
+                []
 
-        --                div
-        --                [ class "g-ytsubscribe", dataChannelid id, dataLayout "default", dataCount "default" ]
-        --                []
-        --
         Marshmallow name ->
             a [ class "link-marshmallow", href ("https://marshmallow-qa.com/" ++ name) ]
                 [ img [ id "marshmallow-logo", src "https://pbs.twimg.com/profile_images/938296751437615104/vi3FxQJ7_400x400.jpg", title ("マシュマロ: " ++ name) ] [] ]
