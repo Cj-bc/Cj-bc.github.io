@@ -10,6 +10,17 @@
 
 
   <body>
-  <script>var app = Elm.Main.init({flags: 1});</script>
+    <div id="elm"> </div>
+  <script>
+    var app = Elm.Main.init({
+                flags: 1
+              , node: document.getElementById('elm')
+              });
+
+<!-- I'm trying to execute 'gapi.ytsubscribe.go() after DOM loaded. -->
+app.ports.renderYouTubeButton.subscribe(function() {console.log("port called");gapi.ytsubscribe.go()});
+
+
+  </script>
   </body>
 </html>
