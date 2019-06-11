@@ -17,8 +17,9 @@
               , node: document.getElementById('elm')
               });
 
-<!-- I'm trying to execute 'gapi.ytsubscribe.go() after DOM loaded. -->
-app.ports.renderYouTubeButton.subscribe(function() {console.log("port called");gapi.ytsubscribe.go()});
+    app.ports.renderYouTubeButton.subscribe(function() {
+      requestAnimationFrame(function() {gapi.ytsubscribe.go()})
+    });
 
 
   </script>
