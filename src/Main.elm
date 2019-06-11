@@ -267,7 +267,7 @@ viewLink ln =
 
         Youtube name id_ ->
             div
-                [ class "g-ytsubscribe", dataChannelid id_, dataLayout "default", dataCount "default" ]
+                [ class "g-ytsubscribe", dataChannelid id_, dataLayout "full", dataCount "default" ]
                 []
 
         Marshmallow name ->
