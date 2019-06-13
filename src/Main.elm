@@ -2,7 +2,7 @@ port module Main exposing (main)
 
 import Browser
 import FavCharacter exposing (Character(..), Link(..))
-import Html exposing (Html, a, article, button, div, footer, form, header, img, input, label, p, pre, text, textarea)
+import Html exposing (Html, a, article, button, div, footer, form, header, img, input, label, li, nav, p, pre, text, textarea)
 import Html.Attributes exposing (class, for, href, id, name, src, title, type_)
 import Html.Events exposing (onClick)
 import List
@@ -336,11 +336,13 @@ viewBlog =
 viewHeader : Html Msg
 viewHeader =
     header []
-        [ button [ onClick (ChangeTopic Top) ] [ text "Cj-bc" ]
-        , button [ onClick (ChangeTopic Aboutme) ] [ text "Aboutme" ]
-        , button [ onClick (ChangeTopic Projects) ] [ text "Projects" ]
-        , button [ onClick (ChangeTopic Products) ] [ text "Products" ]
-        , button [ onClick (ChangeTopic Blog) ] [ text "Blog" ]
+        [ nav []
+            [ li [] [ button [ onClick (ChangeTopic Top) ] [ text "Cj-bc" ] ]
+            , li [] [ button [ onClick (ChangeTopic Aboutme) ] [ text "Aboutme" ] ]
+            , li [] [ button [ onClick (ChangeTopic Projects) ] [ text "Projects" ] ]
+            , li [] [ button [ onClick (ChangeTopic Products) ] [ text "Products" ] ]
+            , li [] [ button [ onClick (ChangeTopic Blog) ] [ text "Blog" ] ]
+            ]
         ]
 
 
