@@ -425,11 +425,8 @@ netlify =
 -- Product {{{
 
 
-type alias Product =
-    { name : String
-    , description : String
-    , url : String
-    }
+type Product
+    = Product Name Description
 
 
 products : List Product
