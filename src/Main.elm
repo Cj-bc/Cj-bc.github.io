@@ -297,10 +297,10 @@ viewProducts =
 
 
 viewProduct : Product -> Html Msg
-viewProduct (Product name url desc) =
+viewProduct product =
     article []
-        [ a [ href url ] [ text name ]
-        , pre [] [ text desc ]
+        [ a [ href product.url ] [ text product.name ]
+        , pre [] [ text product.description ]
         ]
 
 
