@@ -389,6 +389,27 @@ viewFooter =
 -- }}}
 -- }}}
 --
+-- Utils {{{
+
+
+type alias Name =
+    String
+
+
+type alias Url =
+    String
+
+
+type alias Id =
+    String
+
+
+type alias Description =
+    String
+
+
+
+-- }}}
 --
 -- Netlify {{{
 
@@ -457,18 +478,6 @@ projects =
 -- }}}
 --
 -- FavCharacter {{{
-
-
-type alias Name =
-    String
-
-
-type alias Url =
-    String
-
-
-type alias Id =
-    String
 
 
 type Link
