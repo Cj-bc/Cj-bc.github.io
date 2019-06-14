@@ -311,7 +311,22 @@ viewProduct product =
 
 viewProjects : Html Msg
 viewProjects =
-    viewWIP
+    div [ class "projects" ] (List.map viewProject projects)
+
+
+
+-- }}}
+-- viewProject : Project -> Html Msg {{{
+
+
+viewProject : Project -> Html Msg
+viewProject project =
+    a [ src project.url ]
+        [ article [ class "project" ]
+            [ text project.name
+            , pre [ class "project-description" ] [ text project.description ]
+            ]
+        ]
 
 
 
