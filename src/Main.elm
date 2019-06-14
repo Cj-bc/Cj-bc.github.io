@@ -430,7 +430,28 @@ type Product
 
 products : List Product
 products =
-    []
+    [ Product "blib"
+        (unlines
+            [ "bash用ライブラリマネージャー"
+            , "bash-oo-frameworkと併用する形になっているが、内部に含んでいるため別途インストールは不要。"
+            ]
+        )
+    , Product "check256"
+        (unlines
+            [ "homebrewのformula作成支援用ツール"
+            , "githubのレポジトリ名とバージョン(tag名)を指定すると、そのファイルのsha256ハッシュを表示する。"
+            , "簡単な作りだが、いちいちwgetしてopenssl使って...とする手間が省けると意外と便利。 "
+            ]
+        )
+    , Product "shgif"
+        (unlines
+            [ "AAのGifを表示する"
+            , "独自形式(READMEに記載)で書かれたファイルを読み込み、アニメーション表示をする。"
+            , "ShellScript(bash)製なので大量に動かそうとするとかなりかくつくがそれがいいという評判あるとかないとか。"
+            , "そろそろ綺麗に書き直そうと思いつつ放置されている。"
+            ]
+        )
+    ]
 
 
 
