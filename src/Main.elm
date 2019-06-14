@@ -287,20 +287,19 @@ viewLink ln =
 
 viewProducts : Html Msg
 viewProducts =
-    viewWIP
+    div [] (List.map viewProduct products)
 
 
 
 -- }}}
---    div [] (List.map viewProduct products)
 -- viewProduct : Product -> Html Msg {{{
 
 
 viewProduct : Product -> Html Msg
-viewProduct product =
-    article []
-        [ a [ href product.url ] [ text product.name ]
-        , pre [] [ text product.description ]
+viewProduct (Product name desc) =
+    a [ class "product", href ("https://github.com/Cj-bc/" ++ name) ]
+        [ div [ class "product-name" ] [ text name ]
+        , pre [ class "product-description" ] [ text desc ]
         ]
 
 
