@@ -4797,44 +4797,57 @@ var author$project$Main$init = function (_n0) {
 		A2(author$project$Main$Model, author$project$Main$Top, elm$core$Maybe$Nothing),
 		elm$core$Platform$Cmd$none);
 };
+var elm$json$Json$Encode$null = _Json_encodeNull;
+var author$project$Main$renderYouTubeButton = _Platform_outgoingPort(
+	'renderYouTubeButton',
+	function ($) {
+		return elm$json$Json$Encode$null;
+	});
 var author$project$Main$update = F2(
 	function (msg, model) {
-		if (msg.$ === 'ChangeTopic') {
-			var topic = msg.a;
-			return _Utils_Tuple2(
-				_Utils_update(
-					model,
-					{topic: topic}),
-				elm$core$Platform$Cmd$none);
-		} else {
-			var ch = msg.a;
-			return _Utils_Tuple2(
-				_Utils_update(
-					model,
-					{
-						popupCh: elm$core$Maybe$Just(ch)
-					}),
-				elm$core$Platform$Cmd$none);
+		switch (msg.$) {
+			case 'ChangeTopic':
+				var topic = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{topic: topic}),
+					elm$core$Platform$Cmd$none);
+			case 'CharacterClicked':
+				var ch = msg.a;
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{
+							popupCh: elm$core$Maybe$Just(ch)
+						}),
+					author$project$Main$renderYouTubeButton(_Utils_Tuple0));
+			default:
+				return _Utils_Tuple2(
+					_Utils_update(
+						model,
+						{popupCh: elm$core$Maybe$Nothing}),
+					elm$core$Platform$Cmd$none);
 		}
 	});
-var author$project$FavCharacter$Fanbox = F2(
+var author$project$Main$Character = function (a) {
+	return {$: 'Character', a: a};
+};
+var author$project$Main$Fanbox = F2(
 	function (a, b) {
 		return {$: 'Fanbox', a: a, b: b};
 	});
-var author$project$FavCharacter$Marshmallow = function (a) {
+var author$project$Main$Marshmallow = function (a) {
 	return {$: 'Marshmallow', a: a};
 };
-var author$project$FavCharacter$Other = F2(
+var author$project$Main$Other = F2(
 	function (a, b) {
 		return {$: 'Other', a: a, b: b};
 	});
-var author$project$FavCharacter$Person = function (a) {
-	return {$: 'Person', a: a};
-};
-var author$project$FavCharacter$Twitter = function (a) {
+var author$project$Main$Twitter = function (a) {
 	return {$: 'Twitter', a: a};
 };
-var author$project$FavCharacter$Youtube = F2(
+var author$project$Main$Youtube = F2(
 	function (a, b) {
 		return {$: 'Youtube', a: a, b: b};
 	});
@@ -4911,57 +4924,71 @@ var elm$core$List$intersperse = F2(
 			return A2(elm$core$List$cons, hd, spersed);
 		}
 	});
-var author$project$FavCharacter$unlines = function (xs) {
+var author$project$Main$unlines = function (xs) {
 	return A3(
 		elm$core$List$foldr,
 		elm$core$Basics$append,
 		'',
 		A2(elm$core$List$intersperse, '\n', xs));
 };
-var author$project$FavCharacter$characters = _List_fromArray(
+var elm$core$Basics$identity = function (x) {
+	return x;
+};
+var author$project$Main$characters = _List_fromArray(
 	[
-		author$project$FavCharacter$Person(
+		author$project$Main$Character(
 		{
-			comments: author$project$FavCharacter$unlines(
+			comments: author$project$Main$unlines(
 				_List_fromArray(
 					['とにかく超絶かわいいバ美肉元祖。', 'バ美肉という概念をこの世に生み出してしまった元凶。彼女のおかげでどれだけの人の性癖が歪められたことか...', '数少ない「ボイスチェンジャー適合者」であり、初めてボイチェンをかけた時からかわいい女の子の声にしか聞こえないという神がかった声を持つおじさんである。', '本職は絵師(神絵師)だがVtuberとなったことで、ボイチェンの調整をし始め音屋さん並みに音響の話をする。', '魂のukyoさんは数年間もの生放送歴を持つベテランなのでめちゃくちゃ楽しい。普通に配信者としての面白さが半端ない。', 'また、本職がクリエイターなのもあり、「コンテンツ」に対する考え方は尊敬に値する。というかそこだけじゃなく全てにおいてめっちゃ尊敬してますあのすごい'])),
 			details: '『バーチャルボイスチェンジお絵かきYoutuber魔王おじさんです。』',
 			links: _List_fromArray(
 				[
-					author$project$FavCharacter$Twitter('ukyo_rst'),
-					A2(author$project$FavCharacter$Youtube, 'まぐろなちゃんねる', 'https://www.youtube.com/channel/UCPf-EnX70UM7jqjKwhDmS8g'),
-					author$project$FavCharacter$Marshmallow('ukyo_rst'),
-					A2(author$project$FavCharacter$Fanbox, 'ukyo_rst', 'https://www.pixiv.net/fanbox/creator/169083'),
-					A2(author$project$FavCharacter$Other, 'ukyoさんWiki', 'https://dic.nicovideo.jp/a/ukyo%20rst')
+					author$project$Main$Twitter('ukyo_rst'),
+					A2(author$project$Main$Youtube, 'まぐろなちゃんねる', 'UCPf-EnX70UM7jqjKwhDmS8g'),
+					author$project$Main$Marshmallow('ukyo_rst'),
+					A2(author$project$Main$Fanbox, 'ukyo_rst', '169083'),
+					A2(author$project$Main$Other, 'ukyoさんWiki', 'https://dic.nicovideo.jp/a/ukyo%20rst')
 				]),
 			name: '魔王マグロナ',
 			pic: 'https://yt3.ggpht.com/a/AGF-l7-nbjPwvmOOyrp7KlRKX9Xh5oiInNQFOSWCIg=s288-mo-c-c0xffffffff-rj-k-no'
 		}),
-		author$project$FavCharacter$Person(
+		author$project$Main$Character(
 		{
-			comments: author$project$FavCharacter$unlines(
+			comments: author$project$Main$unlines(
 				_List_fromArray(
 					['ロリ系バ美肉おじさんの筆頭。', 'まぐろなちゃんの次くらいに出現した「ボイチェン適合者」。その可愛い声とあざとい仕草は人々を捉えて離さない。', 'まぐろなちゃんの力でボイチェンが進化している「子供部屋」メンバーの一人。', 'まぐろなちゃんと同じく本職は絵師。', 'ukyoさん(まぐろなちゃんの魂)の配信の古参リスナーであり、ukyoさんをとても尊敬していた。絵師になったのもその影響のようである。かつて尊敬したukyoさんと今や仲良くコラボ配信等を行なっており、とても幸せそうでファンとしては本当に嬉しい。ちなみにまぐろなちゃんの(ukyoさんの)家と徒歩数分圏内に住んでいる。てぇてぇな。', '普段は所謂「メスガキ」ムーヴでイキリ散らかしているが、コンテンツへの考え方等しっかりしてるところはしっかりしており、とても安心できる。'])),
 			details: '『ボイチェンVTuberの兎鞠（とまり）まりです お菓子とげーむだいすき！』',
 			links: _List_fromArray(
 				[
-					author$project$FavCharacter$Twitter('tomari_mari'),
-					A2(author$project$FavCharacter$Youtube, 'Tomari Mari channel/兎鞠まりちゃんねる', 'https://www.youtube.com/channel/UCkPIfBOLoO0hVPG-tI2YeGg'),
-					author$project$FavCharacter$Marshmallow('tomari_mari'),
-					A2(author$project$FavCharacter$Fanbox, '兎鞠まり', 'https://www.pixiv.net/fanbox/creator/33648062'),
-					A2(author$project$FavCharacter$Other, 'Booth', 'tomari-mari.booth.pm'),
-					A2(author$project$FavCharacter$Other, 'OpenREC', 'https://www.openrec.tv/user/tomari_mari')
+					author$project$Main$Twitter('tomari_mari'),
+					A2(author$project$Main$Youtube, 'Tomari Mari channel/兎鞠まりちゃんねる', 'UCkPIfBOLoO0hVPG-tI2YeGg'),
+					author$project$Main$Marshmallow('tomari_mari'),
+					A2(author$project$Main$Fanbox, '兎鞠まり', '33648062'),
+					A2(author$project$Main$Other, 'Booth', 'tomari-mari.booth.pm'),
+					A2(author$project$Main$Other, 'OpenREC', 'https://www.openrec.tv/user/tomari_mari')
 				]),
 			name: '兎鞠まり',
 			pic: 'https://yt3.ggpht.com/a/AGF-l78KDm0T_7A0Kf9Fy9Z1nIgAYlyBr0IJ8sNprQ=s288-mo-c-c0xffffffff-rj-k-no'
 		})
 	]);
-var author$project$Main$CharacterClicked = function (a) {
-	return {$: 'CharacterClicked', a: a};
+var author$project$Main$Github = function (a) {
+	return {$: 'Github', a: a};
 };
-var elm$core$Basics$identity = function (x) {
-	return x;
-};
+var author$project$Main$me = author$project$Main$Character(
+	{
+		comments: 'It\'s me! Obviously',
+		details: ' N odetails here',
+		links: _List_fromArray(
+			[
+				author$project$Main$Twitter('Cj_bc_sd'),
+				author$project$Main$Github('Cj-bc'),
+				A2(author$project$Main$Other, 'Qiita', 'https://qiita.com/Cj-bc')
+			]),
+		name: 'Cj.bc_sd a.k.a Cj-bc',
+		pic: 'assets/icon/cj-bc.jpg'
+	});
+var author$project$Main$HideCharacter = {$: 'HideCharacter'};
 var elm$json$Json$Decode$map = _Json_map1;
 var elm$json$Json$Decode$map2 = _Json_map2;
 var elm$json$Json$Decode$succeed = _Json_succeed;
@@ -4977,84 +5004,21 @@ var elm$virtual_dom$VirtualDom$toHandlerInt = function (handler) {
 			return 3;
 	}
 };
-var elm$html$Html$img = _VirtualDom_node('img');
-var elm$json$Json$Encode$string = _Json_wrap;
-var elm$html$Html$Attributes$stringProperty = F2(
-	function (key, string) {
+var elm$virtual_dom$VirtualDom$attribute = F2(
+	function (key, value) {
 		return A2(
-			_VirtualDom_property,
-			key,
-			elm$json$Json$Encode$string(string));
+			_VirtualDom_attribute,
+			_VirtualDom_noOnOrFormAction(key),
+			_VirtualDom_noJavaScriptOrHtmlUri(value));
 	});
-var elm$html$Html$Attributes$src = function (url) {
-	return A2(
-		elm$html$Html$Attributes$stringProperty,
-		'src',
-		_VirtualDom_noJavaScriptOrHtmlUri(url));
+var author$project$Main$dataChannelid = function (id) {
+	return A2(elm$virtual_dom$VirtualDom$attribute, 'data-channelid', id);
 };
-var elm$html$Html$Attributes$title = elm$html$Html$Attributes$stringProperty('title');
-var elm$virtual_dom$VirtualDom$Normal = function (a) {
-	return {$: 'Normal', a: a};
+var author$project$Main$dataCount = function (str) {
+	return A2(elm$virtual_dom$VirtualDom$attribute, 'data-count', str);
 };
-var elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
-var elm$html$Html$Events$on = F2(
-	function (event, decoder) {
-		return A2(
-			elm$virtual_dom$VirtualDom$on,
-			event,
-			elm$virtual_dom$VirtualDom$Normal(decoder));
-	});
-var elm$html$Html$Events$onClick = function (msg) {
-	return A2(
-		elm$html$Html$Events$on,
-		'click',
-		elm$json$Json$Decode$succeed(msg));
-};
-var author$project$Main$viewFav = function (fav) {
-	if (fav.$ === 'Person') {
-		var dic = fav.a;
-		return A2(
-			elm$html$Html$img,
-			_List_fromArray(
-				[
-					elm$html$Html$Attributes$src(dic.pic),
-					elm$html$Html$Attributes$title(dic.name)
-				]),
-			_List_Nil);
-	} else {
-		var dic = fav.a;
-		return A2(
-			elm$html$Html$img,
-			_List_fromArray(
-				[
-					elm$html$Html$Attributes$src(dic.pic),
-					elm$html$Html$Attributes$title(dic.name),
-					elm$html$Html$Events$onClick(
-					author$project$Main$CharacterClicked(fav))
-				]),
-			_List_Nil);
-	}
-};
-var elm$core$List$map = F2(
-	function (f, xs) {
-		return A3(
-			elm$core$List$foldr,
-			F2(
-				function (x, acc) {
-					return A2(
-						elm$core$List$cons,
-						f(x),
-						acc);
-				}),
-			_List_Nil,
-			xs);
-	});
-var elm$html$Html$div = _VirtualDom_node('div');
-var author$project$Main$viewFavs = function (favs) {
-	return A2(
-		elm$html$Html$div,
-		_List_Nil,
-		A2(elm$core$List$map, author$project$Main$viewFav, favs));
+var author$project$Main$dataLayout = function (str) {
+	return A2(elm$virtual_dom$VirtualDom$attribute, 'data-layout', str);
 };
 var capitalist$elm_octicons$Octicons$defaultOptions = {_class: elm$core$Maybe$Nothing, color: 'black', fillRule: 'evenodd', height: 16, margin: elm$core$Maybe$Nothing, style: elm$core$Maybe$Nothing, width: 16};
 var capitalist$elm_octicons$Octicons$markGithubPath = 'M8,0 C3.58,0 0,3.58 0,8 C0,11.54 2.29,14.53 5.47,15.59 C5.87,15.66 6.02,15.42 6.02,15.21 C6.02,15.02 6.01,14.39 6.01,13.72 C4,14.09 3.48,13.23 3.32,12.78 C3.23,12.55 2.84,11.84 2.5,11.65 C2.22,11.5 1.82,11.13 2.49,11.12 C3.12,11.11 3.57,11.7 3.72,11.94 C4.44,13.15 5.59,12.81 6.05,12.6 C6.12,12.08 6.33,11.73 6.56,11.53 C4.78,11.33 2.92,10.64 2.92,7.58 C2.92,6.71 3.23,5.99 3.74,5.43 C3.66,5.23 3.38,4.41 3.82,3.31 C3.82,3.31 4.49,3.1 6.02,4.13 C6.66,3.95 7.34,3.86 8.02,3.86 C8.7,3.86 9.38,3.95 10.02,4.13 C11.55,3.09 12.22,3.31 12.22,3.31 C12.66,4.41 12.38,5.23 12.3,5.43 C12.81,5.99 13.12,6.7 13.12,7.58 C13.12,10.65 11.25,11.33 9.47,11.53 C9.76,11.78 10.01,12.26 10.01,13.01 C10.01,14.08 10,14.94 10,15.21 C10,15.42 10.15,15.67 10.55,15.59 C13.71,14.53 16,11.53 16,8 C16,3.58 12.42,0 8,0 L8,0 Z';
@@ -5171,8 +5135,18 @@ var capitalist$elm_octicons$Octicons$pathIconWithOptions = F4(
 	});
 var capitalist$elm_octicons$Octicons$markGithub = A3(capitalist$elm_octicons$Octicons$pathIconWithOptions, capitalist$elm_octicons$Octicons$markGithubPath, '0 0 16 16', 'markGithub');
 var elm$html$Html$a = _VirtualDom_node('a');
+var elm$html$Html$div = _VirtualDom_node('div');
+var elm$html$Html$img = _VirtualDom_node('img');
 var elm$virtual_dom$VirtualDom$text = _VirtualDom_text;
 var elm$html$Html$text = elm$virtual_dom$VirtualDom$text;
+var elm$json$Json$Encode$string = _Json_wrap;
+var elm$html$Html$Attributes$stringProperty = F2(
+	function (key, string) {
+		return A2(
+			_VirtualDom_property,
+			key,
+			elm$json$Json$Encode$string(string));
+	});
 var elm$html$Html$Attributes$class = elm$html$Html$Attributes$stringProperty('className');
 var elm$html$Html$Attributes$href = function (url) {
 	return A2(
@@ -5181,158 +5155,330 @@ var elm$html$Html$Attributes$href = function (url) {
 		_VirtualDom_noJavaScriptUri(url));
 };
 var elm$html$Html$Attributes$id = elm$html$Html$Attributes$stringProperty('id');
-var author$project$Main$viewAboutme = A2(
-	elm$html$Html$div,
-	_List_fromArray(
-		[
-			elm$html$Html$Attributes$class('topic-aboutme')
-		]),
-	_List_fromArray(
+var elm$html$Html$Attributes$src = function (url) {
+	return A2(
+		elm$html$Html$Attributes$stringProperty,
+		'src',
+		_VirtualDom_noJavaScriptOrHtmlUri(url));
+};
+var elm$html$Html$Attributes$title = elm$html$Html$Attributes$stringProperty('title');
+var author$project$Main$viewLink = function (ln) {
+	switch (ln.$) {
+		case 'Twitter':
+			var name = ln.a;
+			return A2(
+				elm$html$Html$a,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('link-twitter'),
+						elm$html$Html$Attributes$href('https://twitter.com/' + name)
+					]),
+				_List_fromArray(
+					[
+						A2(
+						elm$html$Html$img,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$id('twitter-logo'),
+								elm$html$Html$Attributes$src('assets/icon/twitter_blue.svg'),
+								elm$html$Html$Attributes$title(name)
+							]),
+						_List_Nil)
+					]));
+		case 'Github':
+			var name = ln.a;
+			return A2(
+				elm$html$Html$a,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('link-github'),
+						elm$html$Html$Attributes$href('https://github.com/' + name)
+					]),
+				_List_fromArray(
+					[
+						capitalist$elm_octicons$Octicons$markGithub(capitalist$elm_octicons$Octicons$defaultOptions)
+					]));
+		case 'Youtube':
+			var name = ln.a;
+			var id_ = ln.b;
+			return A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('g-ytsubscribe'),
+						author$project$Main$dataChannelid(id_),
+						author$project$Main$dataLayout('full'),
+						author$project$Main$dataCount('default')
+					]),
+				_List_Nil);
+		case 'Marshmallow':
+			var name = ln.a;
+			return A2(
+				elm$html$Html$a,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('link-marshmallow'),
+						elm$html$Html$Attributes$href('https://marshmallow-qa.com/' + name)
+					]),
+				_List_fromArray(
+					[
+						A2(
+						elm$html$Html$img,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$id('marshmallow-logo'),
+								elm$html$Html$Attributes$src('https://pbs.twimg.com/profile_images/938296751437615104/vi3FxQJ7_400x400.jpg'),
+								elm$html$Html$Attributes$title('マシュマロ: ' + name)
+							]),
+						_List_Nil)
+					]));
+		case 'Fanbox':
+			var name = ln.a;
+			var id = ln.b;
+			return A2(
+				elm$html$Html$a,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('link-fanbox'),
+						elm$html$Html$Attributes$href('https://www.pixiv.net/fanbox/creator/' + id)
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text('fanbox: ' + name)
+					]));
+		default:
+			var name = ln.a;
+			var url = ln.b;
+			return A2(
+				elm$html$Html$a,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('link-other'),
+						elm$html$Html$Attributes$href(url)
+					]),
+				_List_fromArray(
+					[
+						A2(
+						elm$html$Html$img,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$id('other-logo'),
+								elm$html$Html$Attributes$src('assets/icon/other_logo.svg'),
+								elm$html$Html$Attributes$title(name)
+							]),
+						_List_Nil)
+					]));
+	}
+};
+var elm$core$List$map = F2(
+	function (f, xs) {
+		return A3(
+			elm$core$List$foldr,
+			F2(
+				function (x, acc) {
+					return A2(
+						elm$core$List$cons,
+						f(x),
+						acc);
+				}),
+			_List_Nil,
+			xs);
+	});
+var elm$html$Html$button = _VirtualDom_node('button');
+var elm$html$Html$pre = _VirtualDom_node('pre');
+var elm$virtual_dom$VirtualDom$Normal = function (a) {
+	return {$: 'Normal', a: a};
+};
+var elm$virtual_dom$VirtualDom$on = _VirtualDom_on;
+var elm$html$Html$Events$on = F2(
+	function (event, decoder) {
+		return A2(
+			elm$virtual_dom$VirtualDom$on,
+			event,
+			elm$virtual_dom$VirtualDom$Normal(decoder));
+	});
+var elm$html$Html$Events$onClick = function (msg) {
+	return A2(
+		elm$html$Html$Events$on,
+		'click',
+		elm$json$Json$Decode$succeed(msg));
+};
+var author$project$Main$viewCharacter = function (_n0) {
+	var dic = _n0.a;
+	return A2(
+		elm$html$Html$div,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('character')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				elm$html$Html$button,
+				_List_fromArray(
+					[
+						elm$html$Html$Events$onClick(author$project$Main$HideCharacter)
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text('x')
+					])),
+				A2(
+				elm$html$Html$img,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$src(dic.pic),
+						elm$html$Html$Attributes$title(dic.name)
+					]),
+				_List_Nil),
+				elm$html$Html$text(dic.name),
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('character-links')
+					]),
+				A2(elm$core$List$map, author$project$Main$viewLink, dic.links)),
+				A2(
+				elm$html$Html$pre,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('character-details')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text(dic.details)
+					])),
+				A2(
+				elm$html$Html$pre,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('character-comments')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text(dic.comments)
+					]))
+			]));
+};
+var author$project$Main$CharacterClicked = function (a) {
+	return {$: 'CharacterClicked', a: a};
+};
+var elm$html$Html$input = _VirtualDom_node('input');
+var elm$html$Html$Attributes$type_ = elm$html$Html$Attributes$stringProperty('type');
+var author$project$Main$viewFav = function (fav) {
+	var _n0 = fav;
+	var dic = _n0.a;
+	return A2(
+		elm$html$Html$input,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('fav-selectIcon'),
+				elm$html$Html$Attributes$type_('image'),
+				elm$html$Html$Attributes$src(dic.pic),
+				elm$html$Html$Attributes$title(dic.name),
+				elm$html$Html$Events$onClick(
+				author$project$Main$CharacterClicked(fav))
+			]),
+		_List_Nil);
+};
+var author$project$Main$viewFavs = function (favs) {
+	return A2(
+		elm$html$Html$div,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('aboutme-favs')
+			]),
+		A2(elm$core$List$map, author$project$Main$viewFav, favs));
+};
+var author$project$Main$viewAboutme = function (model) {
+	var _n0 = author$project$Main$me;
+	var dic = _n0.a;
+	var base = _List_fromArray(
 		[
 			A2(
 			elm$html$Html$img,
 			_List_fromArray(
 				[
-					elm$html$Html$Attributes$src('assets/icon/cj-bc.jpg')
+					elm$html$Html$Attributes$src(dic.pic),
+					elm$html$Html$Attributes$title(dic.name)
 				]),
 			_List_Nil),
+			elm$html$Html$text(dic.name),
 			A2(
 			elm$html$Html$div,
 			_List_fromArray(
 				[
-					elm$html$Html$Attributes$class('aboutme-name')
+					elm$html$Html$Attributes$class('character-links')
+				]),
+			A2(elm$core$List$map, author$project$Main$viewLink, dic.links)),
+			A2(
+			elm$html$Html$pre,
+			_List_fromArray(
+				[
+					elm$html$Html$Attributes$class('character-details')
 				]),
 			_List_fromArray(
 				[
-					elm$html$Html$text('Cj.bc_sd a.k.a Cj-bc')
+					elm$html$Html$text(dic.details)
 				])),
 			A2(
-			elm$html$Html$div,
+			elm$html$Html$pre,
 			_List_fromArray(
 				[
-					elm$html$Html$Attributes$class('aboutme-sns')
+					elm$html$Html$Attributes$class('character-comments')
 				]),
 			_List_fromArray(
 				[
-					capitalist$elm_octicons$Octicons$markGithub(capitalist$elm_octicons$Octicons$defaultOptions),
-					A2(
-					elm$html$Html$a,
-					_List_fromArray(
-						[
-							elm$html$Html$Attributes$href('https://github.com/Cj-bc')
-						]),
-					_List_fromArray(
-						[
-							elm$html$Html$text('@Cj-bc')
-						])),
-					A2(
-					elm$html$Html$img,
-					_List_fromArray(
-						[
-							elm$html$Html$Attributes$id('twitter-logo'),
-							elm$html$Html$Attributes$src('assets/icon/twitter_blue.svg')
-						]),
-					_List_Nil),
-					A2(
-					elm$html$Html$a,
-					_List_fromArray(
-						[
-							elm$html$Html$Attributes$href('https://twitter.com/Cj_bc_sd')
-						]),
-					_List_fromArray(
-						[
-							elm$html$Html$text('@Cj_bc_sd')
-						]))
+					elm$html$Html$text(dic.comments)
 				])),
-			A2(
-			elm$html$Html$div,
-			_List_fromArray(
-				[
-					elm$html$Html$Attributes$class('aboutme-details')
-				]),
-			_List_fromArray(
-				[
-					elm$html$Html$text('hoge')
-				])),
-			author$project$Main$viewFavs(author$project$FavCharacter$characters)
-		]));
-var author$project$Main$viewBlog = A2(
-	elm$html$Html$div,
-	_List_Nil,
-	_List_fromArray(
-		[
-			elm$html$Html$text('work in progress...')
-		]));
-var elm$html$Html$pre = _VirtualDom_node('pre');
-var author$project$Main$viewCharacter = function (ch) {
-	if (ch.$ === 'Person') {
-		var dic = ch.a;
+			author$project$Main$viewFavs(author$project$Main$characters)
+		]);
+	var _n1 = model.popupCh;
+	if (_n1.$ === 'Nothing') {
 		return A2(
 			elm$html$Html$div,
-			_List_Nil,
 			_List_fromArray(
 				[
-					A2(
-					elm$html$Html$img,
-					_List_fromArray(
-						[
-							elm$html$Html$Attributes$src(dic.pic),
-							elm$html$Html$Attributes$title(dic.name)
-						]),
-					_List_Nil),
-					elm$html$Html$text(dic.name),
-					A2(
-					elm$html$Html$pre,
-					_List_Nil,
-					_List_fromArray(
-						[
-							elm$html$Html$text(dic.details)
-						]))
-				]));
+					elm$html$Html$Attributes$class('topic-aboutme')
+				]),
+			base);
 	} else {
-		var dic = ch.a;
+		var character = _n1.a;
 		return A2(
 			elm$html$Html$div,
-			_List_Nil,
 			_List_fromArray(
 				[
-					A2(
-					elm$html$Html$img,
-					_List_fromArray(
-						[
-							elm$html$Html$Attributes$src(dic.pic),
-							elm$html$Html$Attributes$title(dic.name)
-						]),
-					_List_Nil),
-					elm$html$Html$text(dic.name),
-					A2(
-					elm$html$Html$pre,
-					_List_Nil,
-					_List_fromArray(
-						[
-							elm$html$Html$text(dic.details)
-						]))
-				]));
+					elm$html$Html$Attributes$class('topic-aboutme')
+				]),
+			A2(
+				elm$core$List$append,
+				base,
+				_List_fromArray(
+					[
+						author$project$Main$viewCharacter(character)
+					])));
 	}
 };
-var elm$virtual_dom$VirtualDom$attribute = F2(
-	function (key, value) {
-		return A2(
-			_VirtualDom_attribute,
-			_VirtualDom_noOnOrFormAction(key),
-			_VirtualDom_noJavaScriptOrHtmlUri(value));
-	});
-var author$project$Netlify$netlify = elm$virtual_dom$VirtualDom$attribute('netlify');
-var elm$html$Html$button = _VirtualDom_node('button');
+var author$project$Main$viewWIP = A2(
+	elm$html$Html$div,
+	_List_fromArray(
+		[
+			elm$html$Html$Attributes$class('WIP')
+		]),
+	_List_fromArray(
+		[
+			elm$html$Html$text('Work in progress...')
+		]));
+var author$project$Main$viewBlog = author$project$Main$viewWIP;
+var author$project$Main$netlify = elm$virtual_dom$VirtualDom$attribute('netlify');
 var elm$html$Html$footer = _VirtualDom_node('footer');
 var elm$html$Html$form = _VirtualDom_node('form');
-var elm$html$Html$input = _VirtualDom_node('input');
 var elm$html$Html$label = _VirtualDom_node('label');
 var elm$html$Html$p = _VirtualDom_node('p');
 var elm$html$Html$textarea = _VirtualDom_node('textarea');
 var elm$html$Html$Attributes$for = elm$html$Html$Attributes$stringProperty('htmlFor');
 var elm$html$Html$Attributes$name = elm$html$Html$Attributes$stringProperty('name');
-var elm$html$Html$Attributes$type_ = elm$html$Html$Attributes$stringProperty('type');
 var author$project$Main$viewFooter = A2(
 	elm$html$Html$footer,
 	_List_Nil,
@@ -5343,7 +5489,7 @@ var author$project$Main$viewFooter = A2(
 			_List_fromArray(
 				[
 					elm$html$Html$Attributes$name('contact'),
-					author$project$Netlify$netlify('')
+					author$project$Main$netlify('')
 				]),
 			_List_fromArray(
 				[
@@ -5440,82 +5586,221 @@ var author$project$Main$ChangeTopic = function (a) {
 };
 var author$project$Main$Products = {$: 'Products'};
 var author$project$Main$Projects = {$: 'Projects'};
+var elm$html$Html$header = _VirtualDom_node('header');
+var elm$html$Html$li = _VirtualDom_node('li');
+var elm$html$Html$nav = _VirtualDom_node('nav');
 var author$project$Main$viewHeader = A2(
-	elm$html$Html$div,
+	elm$html$Html$header,
 	_List_Nil,
 	_List_fromArray(
 		[
 			A2(
-			elm$html$Html$button,
+			elm$html$Html$nav,
+			_List_Nil,
 			_List_fromArray(
 				[
-					elm$html$Html$Events$onClick(
-					author$project$Main$ChangeTopic(author$project$Main$Top))
-				]),
-			_List_fromArray(
-				[
-					elm$html$Html$text('Cj-bc')
-				])),
-			A2(
-			elm$html$Html$button,
-			_List_fromArray(
-				[
-					elm$html$Html$Events$onClick(
-					author$project$Main$ChangeTopic(author$project$Main$Aboutme))
-				]),
-			_List_fromArray(
-				[
-					elm$html$Html$text('Aboutme')
-				])),
-			A2(
-			elm$html$Html$button,
-			_List_fromArray(
-				[
-					elm$html$Html$Events$onClick(
-					author$project$Main$ChangeTopic(author$project$Main$Projects))
-				]),
-			_List_fromArray(
-				[
-					elm$html$Html$text('Projects')
-				])),
-			A2(
-			elm$html$Html$button,
-			_List_fromArray(
-				[
-					elm$html$Html$Events$onClick(
-					author$project$Main$ChangeTopic(author$project$Main$Products))
-				]),
-			_List_fromArray(
-				[
-					elm$html$Html$text('Products')
-				])),
-			A2(
-			elm$html$Html$button,
-			_List_fromArray(
-				[
-					elm$html$Html$Events$onClick(
-					author$project$Main$ChangeTopic(author$project$Main$Blog))
-				]),
-			_List_fromArray(
-				[
-					elm$html$Html$text('Blog')
+					A2(
+					elm$html$Html$li,
+					_List_Nil,
+					_List_fromArray(
+						[
+							A2(
+							elm$html$Html$button,
+							_List_fromArray(
+								[
+									elm$html$Html$Events$onClick(
+									author$project$Main$ChangeTopic(author$project$Main$Top))
+								]),
+							_List_fromArray(
+								[
+									elm$html$Html$text('Cj-bc')
+								]))
+						])),
+					A2(
+					elm$html$Html$li,
+					_List_Nil,
+					_List_fromArray(
+						[
+							A2(
+							elm$html$Html$button,
+							_List_fromArray(
+								[
+									elm$html$Html$Events$onClick(
+									author$project$Main$ChangeTopic(author$project$Main$Aboutme))
+								]),
+							_List_fromArray(
+								[
+									elm$html$Html$text('Aboutme')
+								]))
+						])),
+					A2(
+					elm$html$Html$li,
+					_List_Nil,
+					_List_fromArray(
+						[
+							A2(
+							elm$html$Html$button,
+							_List_fromArray(
+								[
+									elm$html$Html$Events$onClick(
+									author$project$Main$ChangeTopic(author$project$Main$Projects))
+								]),
+							_List_fromArray(
+								[
+									elm$html$Html$text('Projects')
+								]))
+						])),
+					A2(
+					elm$html$Html$li,
+					_List_Nil,
+					_List_fromArray(
+						[
+							A2(
+							elm$html$Html$button,
+							_List_fromArray(
+								[
+									elm$html$Html$Events$onClick(
+									author$project$Main$ChangeTopic(author$project$Main$Products))
+								]),
+							_List_fromArray(
+								[
+									elm$html$Html$text('Products')
+								]))
+						])),
+					A2(
+					elm$html$Html$li,
+					_List_Nil,
+					_List_fromArray(
+						[
+							A2(
+							elm$html$Html$button,
+							_List_fromArray(
+								[
+									elm$html$Html$Events$onClick(
+									author$project$Main$ChangeTopic(author$project$Main$Blog))
+								]),
+							_List_fromArray(
+								[
+									elm$html$Html$text('Blog')
+								]))
+						]))
 				]))
 		]));
-var author$project$Main$viewProducts = elm$html$Html$text('hoge');
+var author$project$Main$Product = F2(
+	function (a, b) {
+		return {$: 'Product', a: a, b: b};
+	});
+var author$project$Main$products = _List_fromArray(
+	[
+		A2(
+		author$project$Main$Product,
+		'blib',
+		author$project$Main$unlines(
+			_List_fromArray(
+				['bash用ライブラリマネージャー', 'bash-oo-frameworkと併用する形になっているが、内部に含んでいるため別途インストールは不要。']))),
+		A2(
+		author$project$Main$Product,
+		'check256',
+		author$project$Main$unlines(
+			_List_fromArray(
+				['homebrewのformula作成支援用ツール', 'githubのレポジトリ名とバージョン(tag名)を指定すると、そのファイルのsha256ハッシュを表示する。', '簡単な作りだが、いちいちwgetしてopenssl使って...とする手間が省けると意外と便利。 ']))),
+		A2(
+		author$project$Main$Product,
+		'shgif',
+		author$project$Main$unlines(
+			_List_fromArray(
+				['AAのGifを表示する', '独自形式(READMEに記載)で書かれたファイルを読み込み、アニメーション表示をする。', 'ShellScript(bash)製なので大量に動かそうとするとかなりかくつくがそれがいいという評判あるとかないとか。', 'そろそろ綺麗に書き直そうと思いつつ放置されている。'])))
+	]);
+var author$project$Main$viewProduct = function (_n0) {
+	var name = _n0.a;
+	var desc = _n0.b;
+	return A2(
+		elm$html$Html$a,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('product'),
+				elm$html$Html$Attributes$href('https://github.com/Cj-bc/' + name)
+			]),
+		_List_fromArray(
+			[
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('product-name')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text(name)
+					])),
+				A2(
+				elm$html$Html$pre,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('product-description')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text(desc)
+					]))
+			]));
+};
+var author$project$Main$viewProducts = A2(
+	elm$html$Html$div,
+	_List_Nil,
+	A2(elm$core$List$map, author$project$Main$viewProduct, author$project$Main$products));
+var author$project$Main$Project = F3(
+	function (name, description, url) {
+		return {description: description, name: name, url: url};
+	});
+var author$project$Main$projects = _List_fromArray(
+	[
+		A3(
+		author$project$Main$Project,
+		'mcUI',
+		author$project$Main$unlines(
+			_List_fromArray(
+				['マイクラからshellを操作するプロジェクト', '各ファイルをオブジェクトとして3D表現し、それぞれに視覚的なインタラクションを行うことでshellの操作をする。', '名前の由来はマインクラフトから\'mc\'を、`GUI`/`CUI`から`UI`をとっている。決してUIフレームワークではない', '尚これは実験的なプロジェクトであり、いつか「3D表示がデフォなOS」を作ってみたいなと思っているがまだ未来の話。'])),
+		'https://github.com/Cj-bc/mcUI'),
+		A3(
+		author$project$Main$Project,
+		'Yozakura Project',
+		author$project$Main$unlines(
+			_List_fromArray(
+				['「Vtuberシステム再発明プロジェクト」', '動画撮影はもちろんのこと、アップロードやライブストリーミング、できれば動画編集等まで再発明しようというプロジェクト。', '尚自分がバ美肉おじさんに傾倒しているため、ボイチェンも候補のうちに入る。', 'まだまだ始めたばかりで年単位のプロジェクトだが、徐々に進めていきたいと思っている。'])),
+		'https://github.com/Cj-bc/yozakura-project')
+	]);
+var author$project$Main$viewProject = function (project) {
+	return A2(
+		elm$html$Html$a,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('project'),
+				elm$html$Html$Attributes$href(project.url)
+			]),
+		_List_fromArray(
+			[
+				elm$html$Html$text(project.name),
+				A2(
+				elm$html$Html$pre,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('project-description')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text(project.description)
+					]))
+			]));
+};
 var author$project$Main$viewProjects = A2(
 	elm$html$Html$div,
-	_List_Nil,
 	_List_fromArray(
 		[
-			elm$html$Html$text('work in progress...')
-		]));
-var author$project$Main$viewTop = A2(
-	elm$html$Html$div,
-	_List_Nil,
-	_List_fromArray(
-		[
-			elm$html$Html$text('nothing here yet')
-		]));
+			elm$html$Html$Attributes$class('projects')
+		]),
+	A2(elm$core$List$map, author$project$Main$viewProject, author$project$Main$projects));
+var author$project$Main$viewTop = author$project$Main$viewWIP;
 var author$project$Main$view = function (model) {
 	var viewTopic = function () {
 		var _n1 = model.topic;
@@ -5523,13 +5808,7 @@ var author$project$Main$view = function (model) {
 			case 'Top':
 				return author$project$Main$viewTop;
 			case 'Aboutme':
-				var _n2 = model.popupCh;
-				if (_n2.$ === 'Nothing') {
-					return author$project$Main$viewAboutme;
-				} else {
-					var ch = _n2.a;
-					return author$project$Main$viewCharacter(ch);
-				}
+				return author$project$Main$viewAboutme(model);
 			case 'Products':
 				return author$project$Main$viewProducts;
 			case 'Projects':
