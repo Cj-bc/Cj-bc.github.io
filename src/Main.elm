@@ -409,7 +409,8 @@ products =
 
 type alias Project =
     { name : String
-    , comment : String
+    , description : String
+    , url : String
     }
 
 
