@@ -392,6 +392,7 @@ netlify =
 type alias Product =
     { name : String
     , description : String
+    , url : String
     }
 
 
