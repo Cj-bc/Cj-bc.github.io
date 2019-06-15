@@ -379,6 +379,10 @@ viewFooter =
                 ]
             , button [ type_ "submit" ] [ text "submit" ]
             ]
+        , a [ href "https://github.com/Cj-bc/cj-bc.github.io" ]
+            [ Oct.markGithub Oct.defaultOptions
+            , text "show this site in Github"
+            ]
         ]
 
 
