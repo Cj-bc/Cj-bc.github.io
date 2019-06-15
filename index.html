@@ -1,27 +1,27 @@
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
-    <title>Cj.bc_sd</title>
+    <meta charset="UTF-8">
+    <script src="build/main.js"></script>
+    <script src="https://apis.google.com/js/platform.js"></script> <!-- for YouTube link image -->
+    <link rel="stylesheet" href="style.css">
   </head>
 
 
   <body>
-    <h1> Welcome to Cj.bc-sd homepage </h1>
-   
-    <Hr>
+    <div id="elm"> </div>
+  <script>
+    var app = Elm.Main.init({
+                flags: 1
+              , node: document.getElementById('elm')
+              });
+
+    app.ports.renderYouTubeButton.subscribe(function() {
+      requestAnimationFrame(function() {gapi.ytsubscribe.go()})
+    });
 
 
-    <p> Hello, I'm cj.bc-sd, or cj-bc. This is my first page! <br>
-          oh please don't leave cuz there's no leaf! <br>
-          This's just a alpha version, so please give me a brief;)
-    </p>
-
-    <Hr align="left" width="200">
-    <div> Belong to: Y-modify </div>
-    <div> Land: Bash on Vim </div>
-    <div> Lang: Shellscript, Japanese, English </div>
-    <div> Like: Linux, CLI, Bash, vim, MR, Music, and CAT </div>
-    <div> Learing: shellscript, TCP/IP, Python, React </div>
+  </script>
   </body>
 </html>
