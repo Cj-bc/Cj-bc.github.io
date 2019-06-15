@@ -5577,6 +5577,17 @@ var author$project$Main$viewFooter = A2(
 						[
 							elm$html$Html$text('submit')
 						]))
+				])),
+			A2(
+			elm$html$Html$a,
+			_List_fromArray(
+				[
+					elm$html$Html$Attributes$href('https://github.com/Cj-bc/cj-bc.github.io')
+				]),
+			_List_fromArray(
+				[
+					capitalist$elm_octicons$Octicons$markGithub(capitalist$elm_octicons$Octicons$defaultOptions),
+					elm$html$Html$text('show this site in Github')
 				]))
 		]));
 var author$project$Main$Aboutme = {$: 'Aboutme'};
@@ -5587,7 +5598,6 @@ var author$project$Main$ChangeTopic = function (a) {
 var author$project$Main$Products = {$: 'Products'};
 var author$project$Main$Projects = {$: 'Projects'};
 var elm$html$Html$header = _VirtualDom_node('header');
-var elm$html$Html$li = _VirtualDom_node('li');
 var elm$html$Html$nav = _VirtualDom_node('nav');
 var author$project$Main$viewHeader = A2(
 	elm$html$Html$header,
@@ -5596,93 +5606,66 @@ var author$project$Main$viewHeader = A2(
 		[
 			A2(
 			elm$html$Html$nav,
-			_List_Nil,
+			_List_fromArray(
+				[
+					elm$html$Html$Attributes$class('header-nav')
+				]),
 			_List_fromArray(
 				[
 					A2(
-					elm$html$Html$li,
-					_List_Nil,
+					elm$html$Html$button,
 					_List_fromArray(
 						[
-							A2(
-							elm$html$Html$button,
-							_List_fromArray(
-								[
-									elm$html$Html$Events$onClick(
-									author$project$Main$ChangeTopic(author$project$Main$Top))
-								]),
-							_List_fromArray(
-								[
-									elm$html$Html$text('Cj-bc')
-								]))
+							elm$html$Html$Events$onClick(
+							author$project$Main$ChangeTopic(author$project$Main$Top))
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('Cj-bc')
 						])),
 					A2(
-					elm$html$Html$li,
-					_List_Nil,
+					elm$html$Html$button,
 					_List_fromArray(
 						[
-							A2(
-							elm$html$Html$button,
-							_List_fromArray(
-								[
-									elm$html$Html$Events$onClick(
-									author$project$Main$ChangeTopic(author$project$Main$Aboutme))
-								]),
-							_List_fromArray(
-								[
-									elm$html$Html$text('Aboutme')
-								]))
+							elm$html$Html$Events$onClick(
+							author$project$Main$ChangeTopic(author$project$Main$Aboutme))
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('Aboutme')
 						])),
 					A2(
-					elm$html$Html$li,
-					_List_Nil,
+					elm$html$Html$button,
 					_List_fromArray(
 						[
-							A2(
-							elm$html$Html$button,
-							_List_fromArray(
-								[
-									elm$html$Html$Events$onClick(
-									author$project$Main$ChangeTopic(author$project$Main$Projects))
-								]),
-							_List_fromArray(
-								[
-									elm$html$Html$text('Projects')
-								]))
+							elm$html$Html$Events$onClick(
+							author$project$Main$ChangeTopic(author$project$Main$Projects))
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('Projects')
 						])),
 					A2(
-					elm$html$Html$li,
-					_List_Nil,
+					elm$html$Html$button,
 					_List_fromArray(
 						[
-							A2(
-							elm$html$Html$button,
-							_List_fromArray(
-								[
-									elm$html$Html$Events$onClick(
-									author$project$Main$ChangeTopic(author$project$Main$Products))
-								]),
-							_List_fromArray(
-								[
-									elm$html$Html$text('Products')
-								]))
+							elm$html$Html$Events$onClick(
+							author$project$Main$ChangeTopic(author$project$Main$Products))
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('Products')
 						])),
 					A2(
-					elm$html$Html$li,
-					_List_Nil,
+					elm$html$Html$button,
 					_List_fromArray(
 						[
-							A2(
-							elm$html$Html$button,
-							_List_fromArray(
-								[
-									elm$html$Html$Events$onClick(
-									author$project$Main$ChangeTopic(author$project$Main$Blog))
-								]),
-							_List_fromArray(
-								[
-									elm$html$Html$text('Blog')
-								]))
+							elm$html$Html$Events$onClick(
+							author$project$Main$ChangeTopic(author$project$Main$Blog))
+						]),
+					_List_fromArray(
+						[
+							elm$html$Html$text('Blog')
 						]))
 				]))
 		]));
