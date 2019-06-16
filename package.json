@@ -19,5 +19,8 @@
   "homepage": "https://github.com/Cj-bc/cj-bc.github.io#readme",
   "dependencies": {
     "elm": "^0.19.0-no-deps"
+  },
+  "devDependencies": {
+    "elm-format": "^0.8.1"
   }
 }
