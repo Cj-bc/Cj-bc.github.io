@@ -1,0 +1,26 @@
+{
+  "name": "cj-bc.github.io",
+  "version": "1.0.0",
+  "description": "my personal website",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "make": "elm make src/Main.elm --output build/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cj-bc/cj-bc.github.io.git"
+  },
+  "author": "Cj.bc_sd a.k.a Cj-bc",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cj-bc/cj-bc.github.io/issues"
+  },
+  "homepage": "https://github.com/Cj-bc/cj-bc.github.io#readme",
+  "dependencies": {
+    "elm": "^0.19.0-no-deps"
+  },
+  "devDependencies": {
+    "elm-format": "^0.8.1"
+  }
+}
