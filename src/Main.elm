@@ -179,7 +179,7 @@ viewAboutme model =
 
 viewFavs : List Character -> Html Msg
 viewFavs favs =
-    div [ class "aboutme-favs" ] (List.map viewFav favs)
+    div [ class "aboutme-favs d-flex flex-justify-around" ] (List.map viewFav favs)
 
 
 
