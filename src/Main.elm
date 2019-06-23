@@ -320,9 +320,11 @@ viewProjects =
 
 viewProject : Project -> Html Msg
 viewProject project =
-    a [ class "project", href project.url ]
-        [ text project.name
-        , pre [ class "project-description" ] [ text project.description ]
+    div [ class "project border d-flex flex-items-center p-4" ]
+        [ a [ href project.url ]
+            [ div [] [ text project.name ]
+            , pre [ class "project-description" ] [ text project.description ]
+            ]
         ]
 
 
