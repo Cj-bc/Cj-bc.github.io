@@ -156,7 +156,7 @@ viewAboutme model =
             me
 
         base =
-            [ img [ src dic.pic, title dic.name ] []
+            [ img [ class "CircleBadge", src dic.pic, title dic.name ] []
             , text dic.name
             , div [ class "character-links" ] (List.map viewLink dic.links)
             , pre [ class "character-details" ] [ text dic.details ]
@@ -193,7 +193,7 @@ viewFav fav =
         (Character dic) =
             fav
     in
-    input [ class "fav-selectIcon", type_ "image", src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
+    input [ class "fav-selectIcon CircleBadge", type_ "image", src dic.pic, title dic.name, onClick (CharacterClicked fav) ] []
 
 
 
@@ -206,7 +206,7 @@ viewCharacter : Character -> Html Msg
 viewCharacter (Character dic) =
     div [ class "character" ]
         [ button [ onClick HideCharacter ] [ text "x" ]
-        , img [ src dic.pic, title dic.name ] []
+        , img [ class "CircleBadge", src dic.pic, title dic.name ] []
         , text dic.name
         , div [ class "character-links" ] (List.map viewLink dic.links)
         , pre [ class "character-details" ] [ text dic.details ]
