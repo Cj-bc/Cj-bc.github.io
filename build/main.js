@@ -5327,6 +5327,7 @@ var author$project$Main$viewCharacter = function (_n0) {
 				elm$html$Html$img,
 				_List_fromArray(
 					[
+						elm$html$Html$Attributes$class('CircleBadge'),
 						elm$html$Html$Attributes$src(dic.pic),
 						elm$html$Html$Attributes$title(dic.name)
 					]),
@@ -5373,7 +5374,7 @@ var author$project$Main$viewFav = function (fav) {
 		elm$html$Html$input,
 		_List_fromArray(
 			[
-				elm$html$Html$Attributes$class('fav-selectIcon'),
+				elm$html$Html$Attributes$class('fav-selectIcon CircleBadge'),
 				elm$html$Html$Attributes$type_('image'),
 				elm$html$Html$Attributes$src(dic.pic),
 				elm$html$Html$Attributes$title(dic.name),
@@ -5400,6 +5401,7 @@ var author$project$Main$viewAboutme = function (model) {
 			elm$html$Html$img,
 			_List_fromArray(
 				[
+					elm$html$Html$Attributes$class('CircleBadge'),
 					elm$html$Html$Attributes$src(dic.pic),
 					elm$html$Html$Attributes$title(dic.name)
 				]),
@@ -5698,33 +5700,42 @@ var author$project$Main$viewProduct = function (_n0) {
 	var name = _n0.a;
 	var desc = _n0.b;
 	return A2(
-		elm$html$Html$a,
+		elm$html$Html$div,
 		_List_fromArray(
 			[
-				elm$html$Html$Attributes$class('product'),
-				elm$html$Html$Attributes$href('https://github.com/Cj-bc/' + name)
+				elm$html$Html$Attributes$class('border d-flex flex-items-center p-4')
 			]),
 		_List_fromArray(
 			[
 				A2(
-				elm$html$Html$div,
+				elm$html$Html$a,
 				_List_fromArray(
 					[
-						elm$html$Html$Attributes$class('product-name')
+						elm$html$Html$Attributes$class('border product'),
+						elm$html$Html$Attributes$href('https://github.com/Cj-bc/' + name)
 					]),
 				_List_fromArray(
 					[
-						elm$html$Html$text(name)
-					])),
-				A2(
-				elm$html$Html$pre,
-				_List_fromArray(
-					[
-						elm$html$Html$Attributes$class('product-description')
-					]),
-				_List_fromArray(
-					[
-						elm$html$Html$text(desc)
+						A2(
+						elm$html$Html$div,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$class('product-name')
+							]),
+						_List_fromArray(
+							[
+								elm$html$Html$text(name)
+							])),
+						A2(
+						elm$html$Html$pre,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$class('product-description')
+							]),
+						_List_fromArray(
+							[
+								elm$html$Html$text(desc)
+							]))
 					]))
 			]));
 };
@@ -5755,24 +5766,38 @@ var author$project$Main$projects = _List_fromArray(
 	]);
 var author$project$Main$viewProject = function (project) {
 	return A2(
-		elm$html$Html$a,
+		elm$html$Html$div,
 		_List_fromArray(
 			[
-				elm$html$Html$Attributes$class('project'),
-				elm$html$Html$Attributes$href(project.url)
+				elm$html$Html$Attributes$class('project border d-flex flex-items-center p-4')
 			]),
 		_List_fromArray(
 			[
-				elm$html$Html$text(project.name),
 				A2(
-				elm$html$Html$pre,
+				elm$html$Html$a,
 				_List_fromArray(
 					[
-						elm$html$Html$Attributes$class('project-description')
+						elm$html$Html$Attributes$href(project.url)
 					]),
 				_List_fromArray(
 					[
-						elm$html$Html$text(project.description)
+						A2(
+						elm$html$Html$div,
+						_List_Nil,
+						_List_fromArray(
+							[
+								elm$html$Html$text(project.name)
+							])),
+						A2(
+						elm$html$Html$pre,
+						_List_fromArray(
+							[
+								elm$html$Html$Attributes$class('project-description')
+							]),
+						_List_fromArray(
+							[
+								elm$html$Html$text(project.description)
+							]))
 					]))
 			]));
 };
