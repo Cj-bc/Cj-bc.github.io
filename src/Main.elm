@@ -155,21 +155,24 @@ viewAboutme model =
         (Character dic) =
             me
 
-        base =
-            [ img [ class "CircleBadge", src dic.pic, title dic.name ] []
-            , text dic.name
-            , div [ class "character-links" ] (List.map viewLink dic.links)
-            , pre [ class "character-details" ] [ text dic.details ]
-            , pre [ class "character-comments" ] [ text dic.comments ]
-            , viewFavs characters
-            ]
+        myProfile =
+            div [ class "aboutme d-flex flex-column flex-justify-center" ]
+                [ img [ class "CircleBadge", src dic.pic, title dic.name ] []
+                , text dic.name
+                , div [ class "character-links" ] (List.map viewLink dic.links)
+                , pre [ class "character-details" ] [ text dic.details ]
+                , pre [ class "character-comments" ] [ text dic.comments ]
+                ]
+
+        characterProfiles =
+            viewFavs characters
     in
     case model.popupCh of
         Nothing ->
-            div [ class "topic-aboutme" ] base
+            div [ class "topic-aboutme d-flex flex-column" ] [ myProfile, characterProfiles ]
 
         Just character ->
-            div [ class "topic-aboutme" ] (List.append base [ viewCharacter character ])
+            div [ class "topic-aboutme d-flex flex-column" ] [ myProfile, characterProfiles, viewCharacter character ]
 
 
 
