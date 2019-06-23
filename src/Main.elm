@@ -297,9 +297,11 @@ viewProducts =
 
 viewProduct : Product -> Html Msg
 viewProduct (Product name desc) =
-    a [ class "product", href ("https://github.com/Cj-bc/" ++ name) ]
-        [ div [ class "product-name" ] [ text name ]
-        , pre [ class "product-description" ] [ text desc ]
+    div [ class "border d-flex flex-items-center p-4" ]
+        [ a [ class "border product", href ("https://github.com/Cj-bc/" ++ name) ]
+            [ div [ class "product-name" ] [ text name ]
+            , pre [ class "product-description" ] [ text desc ]
+            ]
         ]
 
 
