@@ -211,7 +211,7 @@ viewCharacter (Character dic) =
         [ button [ onClick HideCharacter ] [ text "x" ]
         , img [ class "CircleBadge", src dic.pic, title dic.name ] []
         , text dic.name
-        , div [ class "character-links d-flex flex-justify-between" ] (List.map viewLink dic.links)
+        , div [ class "character-links d-flex flex-justify-center" ] (List.map viewLink dic.links)
         , pre [ class "character-details" ] [ text dic.details ]
         , pre [ class "character-comments" ] [ text dic.comments ]
         ]
