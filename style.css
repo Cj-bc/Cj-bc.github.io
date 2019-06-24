@@ -3,3 +3,16 @@ img#twitter-logo {
   height: auto;
 }
 
+div.topic-aboutme img.CircleBadge {
+  margin: auto;
+}
+
+div.topic-aboutme div.character,
+div.topic-aboutme div.character-name,
+div.topic-aboutme div.character-details,
+div.topic-aboutme div.character-comments,
+div.topic-aboutme div.character-links,
+div.topic-aboutme pre,
+div.topic-aboutme img {
+  margin: auto;
+}
