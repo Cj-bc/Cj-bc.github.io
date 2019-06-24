@@ -159,7 +159,7 @@ viewAboutme model =
             div [ class "aboutme d-flex flex-column" ]
                 [ img [ class "CircleBadge", src dic.pic, title dic.name ] []
                 , text dic.name
-                , div [ class "character-links" ] (List.map viewLink dic.links)
+                , div [ class "character-links d-flex flex-justify-between" ] (List.map viewLink dic.links)
                 , pre [ class "character-details" ] [ text dic.details ]
                 , pre [ class "character-comments" ] [ text dic.comments ]
                 ]
@@ -211,7 +211,7 @@ viewCharacter (Character dic) =
         [ button [ onClick HideCharacter ] [ text "x" ]
         , img [ class "CircleBadge", src dic.pic, title dic.name ] []
         , text dic.name
-        , div [ class "character-links" ] (List.map viewLink dic.links)
+        , div [ class "character-links d-flex flex-justify-between" ] (List.map viewLink dic.links)
         , pre [ class "character-details" ] [ text dic.details ]
         , pre [ class "character-comments" ] [ text dic.comments ]
         ]
