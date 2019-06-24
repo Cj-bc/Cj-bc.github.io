@@ -27,3 +27,6 @@ div.character {
   margin: 10vw;
 }
 
+pre {
+  white-space: pre-wrap;
+}
