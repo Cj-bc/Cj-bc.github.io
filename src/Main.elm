@@ -262,7 +262,7 @@ viewLink ln =
 
         Github name ->
             a [ class "link-github", href ("https://github.com/" ++ name) ]
-                [ Oct.markGithub Oct.defaultOptions
+                [ Oct.defaultOptions |> Oct.size githubSize |> Oct.markGithub
                 ]
 
         Youtube name id_ ->
@@ -387,7 +387,7 @@ viewFooter =
             , button [ type_ "submit" ] [ text "submit" ]
             ]
         , a [ href "https://github.com/Cj-bc/cj-bc.github.io" ]
-            [ Oct.markGithub Oct.defaultOptions
+            [ Oct.defaultOptions |> Oct.size githubSize |> Oct.markGithub
             , text "show this site in Github"
             ]
         ]
@@ -595,6 +595,17 @@ me =
         , comments = "It's me! Obviously"
         , pic = "assets/icon/cj-bc.jpg"
         }
+
+
+
+-- }}}
+--
+-- Consts {{{
+
+
+githubSize : Int
+githubSize =
+    40
 
 
 
