@@ -21,3 +21,9 @@ div.topic-aboutme pre,
 div.topic-aboutme img {
   margin: auto;
 }
+
+div.character {
+  width: 80%;
+  margin: 10vw;
+}
+
