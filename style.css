@@ -1,9 +1,13 @@
 img#twitter-logo {
-  width: 16px;
+  width: 32px;
   height: auto;
 }
 
+img#marshmallow-logo {
+  width: 32px;
+  height: auto;
 }
+
 
 div.topic-aboutme div.character,
 div.topic-aboutme div.character-name,
