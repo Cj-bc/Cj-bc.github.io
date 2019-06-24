@@ -5020,6 +5020,7 @@ var author$project$Main$dataCount = function (str) {
 var author$project$Main$dataLayout = function (str) {
 	return A2(elm$virtual_dom$VirtualDom$attribute, 'data-layout', str);
 };
+var author$project$Main$githubSize = 40;
 var capitalist$elm_octicons$Octicons$defaultOptions = {_class: elm$core$Maybe$Nothing, color: 'black', fillRule: 'evenodd', height: 16, margin: elm$core$Maybe$Nothing, style: elm$core$Maybe$Nothing, width: 16};
 var capitalist$elm_octicons$Octicons$markGithubPath = 'M8,0 C3.58,0 0,3.58 0,8 C0,11.54 2.29,14.53 5.47,15.59 C5.87,15.66 6.02,15.42 6.02,15.21 C6.02,15.02 6.01,14.39 6.01,13.72 C4,14.09 3.48,13.23 3.32,12.78 C3.23,12.55 2.84,11.84 2.5,11.65 C2.22,11.5 1.82,11.13 2.49,11.12 C3.12,11.11 3.57,11.7 3.72,11.94 C4.44,13.15 5.59,12.81 6.05,12.6 C6.12,12.08 6.33,11.73 6.56,11.53 C4.78,11.33 2.92,10.64 2.92,7.58 C2.92,6.71 3.23,5.99 3.74,5.43 C3.66,5.23 3.38,4.41 3.82,3.31 C3.82,3.31 4.49,3.1 6.02,4.13 C6.66,3.95 7.34,3.86 8.02,3.86 C8.7,3.86 9.38,3.95 10.02,4.13 C11.55,3.09 12.22,3.31 12.22,3.31 C12.66,4.41 12.38,5.23 12.3,5.43 C12.81,5.99 13.12,6.7 13.12,7.58 C13.12,10.65 11.25,11.33 9.47,11.53 C9.76,11.78 10.01,12.26 10.01,13.01 C10.01,14.08 10,14.94 10,15.21 C10,15.42 10.15,15.67 10.55,15.59 C13.71,14.53 16,11.53 16,8 C16,3.58 12.42,0 8,0 L8,0 Z';
 var elm$core$List$append = F2(
@@ -5134,6 +5135,12 @@ var capitalist$elm_octicons$Octicons$pathIconWithOptions = F4(
 				]));
 	});
 var capitalist$elm_octicons$Octicons$markGithub = A3(capitalist$elm_octicons$Octicons$pathIconWithOptions, capitalist$elm_octicons$Octicons$markGithubPath, '0 0 16 16', 'markGithub');
+var capitalist$elm_octicons$Octicons$size = F2(
+	function (value, options) {
+		return _Utils_update(
+			options,
+			{height: value, width: value});
+	});
 var elm$html$Html$a = _VirtualDom_node('a');
 var elm$html$Html$div = _VirtualDom_node('div');
 var elm$html$Html$img = _VirtualDom_node('img');
@@ -5196,7 +5203,8 @@ var author$project$Main$viewLink = function (ln) {
 					]),
 				_List_fromArray(
 					[
-						capitalist$elm_octicons$Octicons$markGithub(capitalist$elm_octicons$Octicons$defaultOptions)
+						capitalist$elm_octicons$Octicons$markGithub(
+						A2(capitalist$elm_octicons$Octicons$size, author$project$Main$githubSize, capitalist$elm_octicons$Octicons$defaultOptions))
 					]));
 		case 'Youtube':
 			var name = ln.a;
@@ -5285,6 +5293,8 @@ var elm$core$List$map = F2(
 			xs);
 	});
 var elm$html$Html$button = _VirtualDom_node('button');
+var elm$html$Html$h1 = _VirtualDom_node('h1');
+var elm$html$Html$h3 = _VirtualDom_node('h3');
 var elm$html$Html$pre = _VirtualDom_node('pre');
 var elm$virtual_dom$VirtualDom$Normal = function (a) {
 	return {$: 'Normal', a: a};
@@ -5309,7 +5319,7 @@ var author$project$Main$viewCharacter = function (_n0) {
 		elm$html$Html$div,
 		_List_fromArray(
 			[
-				elm$html$Html$Attributes$class('character')
+				elm$html$Html$Attributes$class('character border d-flex flex-column')
 			]),
 		_List_fromArray(
 			[
@@ -5317,6 +5327,7 @@ var author$project$Main$viewCharacter = function (_n0) {
 				elm$html$Html$button,
 				_List_fromArray(
 					[
+						elm$html$Html$Attributes$class('flex-justify-start'),
 						elm$html$Html$Events$onClick(author$project$Main$HideCharacter)
 					]),
 				_List_fromArray(
@@ -5332,12 +5343,21 @@ var author$project$Main$viewCharacter = function (_n0) {
 						elm$html$Html$Attributes$title(dic.name)
 					]),
 				_List_Nil),
-				elm$html$Html$text(dic.name),
+				A2(
+				elm$html$Html$h1,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('character-name')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text(dic.name)
+					])),
 				A2(
 				elm$html$Html$div,
 				_List_fromArray(
 					[
-						elm$html$Html$Attributes$class('character-links')
+						elm$html$Html$Attributes$class('character-links d-flex flex-justify-center')
 					]),
 				A2(elm$core$List$map, author$project$Main$viewLink, dic.links)),
 				A2(
@@ -5348,7 +5368,13 @@ var author$project$Main$viewCharacter = function (_n0) {
 					]),
 				_List_fromArray(
 					[
-						elm$html$Html$text(dic.details)
+						A2(
+						elm$html$Html$h3,
+						_List_Nil,
+						_List_fromArray(
+							[
+								elm$html$Html$text(dic.details)
+							]))
 					])),
 				A2(
 				elm$html$Html$pre,
@@ -5358,7 +5384,13 @@ var author$project$Main$viewCharacter = function (_n0) {
 					]),
 				_List_fromArray(
 					[
-						elm$html$Html$text(dic.comments)
+						A2(
+						elm$html$Html$h3,
+						_List_Nil,
+						_List_fromArray(
+							[
+								elm$html$Html$text(dic.comments)
+							]))
 					]))
 			]));
 };
@@ -5388,78 +5420,105 @@ var author$project$Main$viewFavs = function (favs) {
 		elm$html$Html$div,
 		_List_fromArray(
 			[
-				elm$html$Html$Attributes$class('aboutme-favs')
+				elm$html$Html$Attributes$class('aboutme-favs d-flex flex-justify-around')
 			]),
 		A2(elm$core$List$map, author$project$Main$viewFav, favs));
 };
 var author$project$Main$viewAboutme = function (model) {
+	var characterProfiles = author$project$Main$viewFavs(author$project$Main$characters);
 	var _n0 = author$project$Main$me;
 	var dic = _n0.a;
-	var base = _List_fromArray(
-		[
-			A2(
-			elm$html$Html$img,
-			_List_fromArray(
-				[
-					elm$html$Html$Attributes$class('CircleBadge'),
-					elm$html$Html$Attributes$src(dic.pic),
-					elm$html$Html$Attributes$title(dic.name)
-				]),
-			_List_Nil),
-			elm$html$Html$text(dic.name),
-			A2(
-			elm$html$Html$div,
-			_List_fromArray(
-				[
-					elm$html$Html$Attributes$class('character-links')
-				]),
-			A2(elm$core$List$map, author$project$Main$viewLink, dic.links)),
-			A2(
-			elm$html$Html$pre,
-			_List_fromArray(
-				[
-					elm$html$Html$Attributes$class('character-details')
-				]),
-			_List_fromArray(
-				[
-					elm$html$Html$text(dic.details)
-				])),
-			A2(
-			elm$html$Html$pre,
-			_List_fromArray(
-				[
-					elm$html$Html$Attributes$class('character-comments')
-				]),
-			_List_fromArray(
-				[
-					elm$html$Html$text(dic.comments)
-				])),
-			author$project$Main$viewFavs(author$project$Main$characters)
-		]);
+	var myProfile = A2(
+		elm$html$Html$div,
+		_List_fromArray(
+			[
+				elm$html$Html$Attributes$class('aboutme d-flex flex-column')
+			]),
+		_List_fromArray(
+			[
+				A2(
+				elm$html$Html$img,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('CircleBadge'),
+						elm$html$Html$Attributes$src(dic.pic),
+						elm$html$Html$Attributes$title(dic.name)
+					]),
+				_List_Nil),
+				A2(
+				elm$html$Html$h1,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('character-name')
+					]),
+				_List_fromArray(
+					[
+						elm$html$Html$text(dic.name)
+					])),
+				A2(
+				elm$html$Html$div,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('character-links d-flex flex-justify-between')
+					]),
+				A2(elm$core$List$map, author$project$Main$viewLink, dic.links)),
+				A2(
+				elm$html$Html$pre,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('character-details')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						elm$html$Html$h3,
+						_List_Nil,
+						_List_fromArray(
+							[
+								elm$html$Html$text(dic.details)
+							]))
+					])),
+				A2(
+				elm$html$Html$pre,
+				_List_fromArray(
+					[
+						elm$html$Html$Attributes$class('character-comments')
+					]),
+				_List_fromArray(
+					[
+						A2(
+						elm$html$Html$h3,
+						_List_Nil,
+						_List_fromArray(
+							[
+								elm$html$Html$text(dic.comments)
+							]))
+					]))
+			]));
 	var _n1 = model.popupCh;
 	if (_n1.$ === 'Nothing') {
 		return A2(
 			elm$html$Html$div,
 			_List_fromArray(
 				[
-					elm$html$Html$Attributes$class('topic-aboutme')
+					elm$html$Html$Attributes$class('topic-aboutme d-flex flex-column')
 				]),
-			base);
+			_List_fromArray(
+				[myProfile, characterProfiles]));
 	} else {
 		var character = _n1.a;
 		return A2(
 			elm$html$Html$div,
 			_List_fromArray(
 				[
-					elm$html$Html$Attributes$class('topic-aboutme')
+					elm$html$Html$Attributes$class('topic-aboutme d-flex flex-column')
 				]),
-			A2(
-				elm$core$List$append,
-				base,
-				_List_fromArray(
-					[
-						author$project$Main$viewCharacter(character)
-					])));
+			_List_fromArray(
+				[
+					myProfile,
+					characterProfiles,
+					author$project$Main$viewCharacter(character)
+				]));
 	}
 };
 var author$project$Main$viewWIP = A2(
@@ -5514,6 +5573,7 @@ var author$project$Main$viewFooter = A2(
 							elm$html$Html$input,
 							_List_fromArray(
 								[
+									elm$html$Html$Attributes$class('form-control'),
 									elm$html$Html$Attributes$id('footer-name'),
 									elm$html$Html$Attributes$name('Name'),
 									elm$html$Html$Attributes$type_('text')
@@ -5539,6 +5599,7 @@ var author$project$Main$viewFooter = A2(
 							elm$html$Html$input,
 							_List_fromArray(
 								[
+									elm$html$Html$Attributes$class('form-control'),
 									elm$html$Html$Attributes$id('footer-email'),
 									elm$html$Html$Attributes$name('Email'),
 									elm$html$Html$Attributes$type_('text')
@@ -5564,6 +5625,7 @@ var author$project$Main$viewFooter = A2(
 							elm$html$Html$textarea,
 							_List_fromArray(
 								[
+									elm$html$Html$Attributes$class('form-control'),
 									elm$html$Html$Attributes$id('footer-message'),
 									elm$html$Html$Attributes$name('message')
 								]),
@@ -5588,7 +5650,8 @@ var author$project$Main$viewFooter = A2(
 				]),
 			_List_fromArray(
 				[
-					capitalist$elm_octicons$Octicons$markGithub(capitalist$elm_octicons$Octicons$defaultOptions),
+					capitalist$elm_octicons$Octicons$markGithub(
+					A2(capitalist$elm_octicons$Octicons$size, author$project$Main$githubSize, capitalist$elm_octicons$Octicons$defaultOptions)),
 					elm$html$Html$text('show this site in Github')
 				]))
 		]));
