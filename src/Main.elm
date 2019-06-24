@@ -1,7 +1,7 @@
 port module Main exposing (main)
 
 import Browser
-import Html exposing (Html, a, article, button, div, footer, form, header, img, input, label, nav, p, pre, text, textarea)
+import Html exposing (Html, a, article, button, div, footer, form, h1, h3, header, img, input, label, nav, p, pre, text, textarea)
 import Html.Attributes exposing (class, for, href, id, name, src, title, type_)
 import Html.Events exposing (onClick)
 import List
@@ -158,10 +158,10 @@ viewAboutme model =
         myProfile =
             div [ class "aboutme d-flex flex-column" ]
                 [ img [ class "CircleBadge", src dic.pic, title dic.name ] []
-                , div [ class "character-name" ] [ text dic.name ]
+                , h1 [ class "character-name" ] [ text dic.name ]
                 , div [ class "character-links d-flex flex-justify-between" ] (List.map viewLink dic.links)
-                , pre [ class "character-details" ] [ text dic.details ]
-                , pre [ class "character-comments" ] [ text dic.comments ]
+                , pre [ class "character-details" ] [ h3 [] [ text dic.details ] ]
+                , pre [ class "character-comments" ] [ h3 [] [ text dic.comments ] ]
                 ]
 
         characterProfiles =
@@ -210,10 +210,10 @@ viewCharacter (Character dic) =
     div [ class "character" ]
         [ button [ onClick HideCharacter ] [ text "x" ]
         , img [ class "CircleBadge", src dic.pic, title dic.name ] []
-        , div [ class "character-name" ] [ text dic.name ]
+        , h1 [ class "character-name" ] [ text dic.name ]
         , div [ class "character-links d-flex flex-justify-center" ] (List.map viewLink dic.links)
-        , pre [ class "character-details" ] [ text dic.details ]
-        , pre [ class "character-comments" ] [ text dic.comments ]
+        , pre [ class "character-details" ] [ h3 [] [ text dic.details ] ]
+        , pre [ class "character-comments" ] [ h3 [] [ text dic.comments ] ]
         ]
 
 
