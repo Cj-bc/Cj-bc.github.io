@@ -8,6 +8,10 @@ img#marshmallow-logo {
   height: auto;
 }
 
+div.character button {
+  width: 32px;
+  height: auto;
+}
 
 div.topic-aboutme h1.character-name,
 div.topic-aboutme h3.character-details,
