@@ -158,7 +158,7 @@ viewAboutme model =
         myProfile =
             div [ class "aboutme d-flex flex-column" ]
                 [ img [ class "CircleBadge", src dic.pic, title dic.name ] []
-                , text dic.name
+                , div [ class "character-name" ] [ text dic.name ]
                 , div [ class "character-links d-flex flex-justify-between" ] (List.map viewLink dic.links)
                 , pre [ class "character-details" ] [ text dic.details ]
                 , pre [ class "character-comments" ] [ text dic.comments ]
