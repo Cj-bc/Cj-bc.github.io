@@ -5319,7 +5319,7 @@ var author$project$Main$viewCharacter = function (_n0) {
 		elm$html$Html$div,
 		_List_fromArray(
 			[
-				elm$html$Html$Attributes$class('character border d-flex flex-column')
+				elm$html$Html$Attributes$class('character border d-flex flex-column bg-gray')
 			]),
 		_List_fromArray(
 			[
