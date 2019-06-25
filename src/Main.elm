@@ -207,7 +207,7 @@ viewFav fav =
 
 viewCharacter : Character -> Html Msg
 viewCharacter (Character dic) =
-    div [ class "character border d-flex flex-column" ]
+    div [ class "character border d-flex flex-column bg-gray" ]
         [ button [ class "flex-justify-start", onClick HideCharacter ] [ text "x" ]
         , img [ class "CircleBadge", src dic.pic, title dic.name ] []
         , h1 [ class "character-name" ] [ text dic.name ]
