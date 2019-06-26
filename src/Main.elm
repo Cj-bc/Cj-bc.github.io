@@ -38,15 +38,31 @@ type Topic
     | Blog
 
 
+type Theme
+    = Dark
+    | White
+
+
+showTheme : Theme -> String
+showTheme t =
+    case t of
+        Dark ->
+            "theme-dark"
+
+        White ->
+            "theme-white"
+
+
 type alias Model =
     { topic : Topic
     , popupCh : Maybe Character
+    , theme : Theme
     }
 
 
 init : flags -> ( Model, Cmd Msg )
 init _ =
-    ( Model Top Nothing, Cmd.none )
+    ( Model Top Nothing White, Cmd.none )
 
 
 
@@ -101,19 +117,19 @@ view model =
         viewTopic =
             case model.topic of
                 Top ->
-                    viewTop
+                    viewTop model
 
                 Aboutme ->
                     viewAboutme model
 
                 Products ->
-                    viewProducts
+                    viewProducts model
 
                 Projects ->
-                    viewProjects
+                    viewProjects model
 
                 Blog ->
-                    viewBlog
+                    viewBlog model
     in
     { title = topicName ++ " -- Cj-bc HP"
     , body =
@@ -128,9 +144,9 @@ view model =
 -- viewWIP : Html Msg {{{
 
 
-viewWIP : Html Msg
-viewWIP =
-    div [ class "WIP" ]
+viewWIP : Model -> Html Msg
+viewWIP model =
+    div [ class ("WIP" ++ " " ++ showTheme model.theme) ]
         [ text "Work in progress..." ]
 
 
@@ -139,9 +155,9 @@ viewWIP =
 -- viewTop : Html Msg {{{
 
 
-viewTop : Html Msg
-viewTop =
-    viewWIP
+viewTop : Model -> Html Msg
+viewTop model =
+    viewWIP model
 
 
 
@@ -169,10 +185,10 @@ viewAboutme model =
     in
     case model.popupCh of
         Nothing ->
-            div [ class "topic-aboutme d-flex flex-column" ] [ myProfile, characterProfiles ]
+            div [ class ("topic-aboutme d-flex flex-column" ++ " " ++ showTheme model.theme) ] [ myProfile, characterProfiles ]
 
         Just character ->
-            div [ class "topic-aboutme d-flex flex-column" ] [ myProfile, characterProfiles, viewCharacter character ]
+            div [ class ("topic-aboutme d-flex flex-column" ++ " " ++ showTheme model.theme) ] [ myProfile, characterProfiles, viewCharacter character ]
 
 
 
@@ -288,9 +304,9 @@ viewLink ln =
 -- viewProducts : Html Msg {{{
 
 
-viewProducts : Html Msg
-viewProducts =
-    div [] (List.map viewProduct products)
+viewProducts : Model -> Html Msg
+viewProducts model =
+    div [ class ("" ++ " " ++ showTheme model.theme) ] (List.map viewProduct products)
 
 
 
@@ -313,9 +329,9 @@ viewProduct (Product name desc) =
 --- viewProjects : Html Msg {{{
 
 
-viewProjects : Html Msg
-viewProjects =
-    div [ class "projects" ] (List.map viewProject projects)
+viewProjects : Model -> Html Msg
+viewProjects model =
+    div [ class ("projects" ++ " " ++ showTheme model.theme) ] (List.map viewProject projects)
 
 
 
@@ -338,9 +354,9 @@ viewProject project =
 -- viewBlog : Html Msg {{{
 
 
-viewBlog : Html Msg
-viewBlog =
-    viewWIP
+viewBlog : Model -> Html Msg
+viewBlog model =
+    viewWIP model
 
 
 
