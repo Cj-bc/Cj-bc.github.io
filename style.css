@@ -37,8 +37,9 @@ pre.character-comments {
 
 div.character {
   position: fixed;
-  width: 80%;
-  margin-left: 10vw;
+  width: 90%;
+  margin-left: 5vw;
+  top: 5vh;
 }
 
 pre {
