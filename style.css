@@ -50,3 +50,14 @@ div.character {
 pre {
   white-space: pre-wrap;
 }
+
+
+img#icon-colorscheme {
+  width: 10%;
+  height: auto;
+  position: fixed;
+  bottom: 2vh;
+  right: 2vw;
+}
+
+

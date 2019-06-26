@@ -136,6 +136,7 @@ view model =
         [ viewHeader
         , viewTopic
         , viewFooter
+        , viewTools model
         ]
     }
 
@@ -407,6 +408,17 @@ viewFooter =
             , text "show this site in Github"
             ]
         ]
+
+
+
+-- }}}
+-- viewTools {{{
+
+
+viewTools : Model -> Html Msg
+viewTools model =
+    div []
+        [ img [ class ("" ++ showTheme model.theme), id "icon-colorscheme", src "assets/icon/icon_colorScheme.svg" ] [] ]
 
 
 
