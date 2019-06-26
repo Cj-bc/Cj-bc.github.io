@@ -57,12 +57,13 @@ type alias Model =
     { topic : Topic
     , popupCh : Maybe Character
     , theme : Theme
+    , themePicker : Bool
     }
 
 
 init : flags -> ( Model, Cmd Msg )
 init _ =
-    ( Model Top Nothing White, Cmd.none )
+    ( Model Top Nothing White False, Cmd.none )
 
 
 
@@ -74,6 +75,8 @@ type Msg
     = ChangeTopic Topic
     | CharacterClicked Character
     | HideCharacter
+    | ThemeChanged Theme
+    | ThemePickerClicked
 
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -87,6 +90,12 @@ update msg model =
 
         HideCharacter ->
             ( { model | popupCh = Nothing }, Cmd.none )
+
+        ThemePickerClicked ->
+            ( { model | themePicker = True }, Cmd.none )
+
+        ThemeChanged t ->
+            ( { model | theme = t }, Cmd.none )
 
 
 
