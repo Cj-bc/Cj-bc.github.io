@@ -23,6 +23,10 @@ div.character button {
   height: auto;
 }
 
+div.topic-aboutme div.aboutme img#icon-me {
+  margin-top: 10vh;
+}
+
 div.topic-aboutme h1.character-name,
 div.topic-aboutme div.character-links,
 div.topic-aboutme pre,
