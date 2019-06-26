@@ -52,7 +52,7 @@ pre {
 }
 
 
-img#icon-colorscheme {
+input#icon-colorscheme {
   width: 10%;
   height: auto;
   position: fixed;
