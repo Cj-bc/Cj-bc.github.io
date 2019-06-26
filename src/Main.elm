@@ -1,7 +1,7 @@
 port module Main exposing (main)
 
 import Browser
-import Html exposing (Html, a, article, button, div, footer, form, h1, h3, header, img, input, label, nav, p, pre, text, textarea)
+import Html exposing (Html, a, article, button, div, footer, form, h1, h2, h3, header, img, input, label, nav, p, pre, text, textarea)
 import Html.Attributes exposing (class, for, href, id, name, src, title, type_)
 import Html.Events exposing (onClick)
 import List
@@ -302,8 +302,8 @@ viewProduct : Product -> Html Msg
 viewProduct (Product name desc) =
     div [ class "border d-flex flex-items-center p-4" ]
         [ a [ class "border product", href ("https://github.com/Cj-bc/" ++ name) ]
-            [ div [ class "product-name" ] [ text name ]
-            , pre [ class "product-description" ] [ text desc ]
+            [ h2 [ class "product-name" ] [ text name ]
+            , pre [ class "product-description" ] [ h3 [] [ text desc ] ]
             ]
         ]
 
@@ -327,8 +327,8 @@ viewProject : Project -> Html Msg
 viewProject project =
     div [ class "project border d-flex flex-items-center p-4" ]
         [ a [ href project.url ]
-            [ div [] [ text project.name ]
-            , pre [ class "project-description" ] [ text project.description ]
+            [ h2 [] [ text project.name ]
+            , pre [ class "project-description" ] [ h3 [] [ text project.description ] ]
             ]
         ]
 
