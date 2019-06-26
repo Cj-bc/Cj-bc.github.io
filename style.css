@@ -13,6 +13,10 @@ img#marshmallow-logo {
   height: auto;
 }
 
+header button {
+  height: 20vh;
+  width: 20%;
+}
 
 div.character button {
   width: 10vw;
