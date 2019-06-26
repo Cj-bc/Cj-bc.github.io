@@ -6,15 +6,13 @@ h3 {
   font-size: 1rem;
 }
 
-img#twitter-logo {
+img#twitter-logo,
+img#other-logo,
+img#marshmallow-logo {
   width: 5vw;
   height: auto;
 }
 
-img#marshmallow-logo {
-  width: 10vw;
-  height: auto;
-}
 
 div.character button {
   width: 10vw;
