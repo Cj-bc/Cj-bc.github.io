@@ -53,17 +53,22 @@ showTheme t =
             "theme-white"
 
 
+type PopUp
+    = ShowCh Character
+    | ThemePicker
+    | NoPopUp
+
+
 type alias Model =
     { topic : Topic
-    , popupCh : Maybe Character
+    , popUp : PopUp
     , theme : Theme
-    , themePicker : Bool
     }
 
 
 init : flags -> ( Model, Cmd Msg )
 init _ =
-    ( Model Top Nothing White False, Cmd.none )
+    ( Model Top NoPopUp White, Cmd.none )
 
 
 
@@ -86,13 +91,13 @@ update msg model =
             ( { model | topic = topic }, Cmd.none )
 
         CharacterClicked ch ->
-            ( { model | popupCh = Just ch }, renderYouTubeButton () )
+            ( { model | popUp = ShowCh ch }, renderYouTubeButton () )
 
         HideCharacter ->
-            ( { model | popupCh = Nothing }, Cmd.none )
+            ( { model | popUp = NoPopUp }, Cmd.none )
 
         ThemePickerClicked ->
-            ( { model | themePicker = True }, Cmd.none )
+            ( { model | popUp = ThemePicker }, Cmd.none )
 
         ThemeChanged t ->
             ( { model | theme = t }, Cmd.none )
@@ -193,12 +198,12 @@ viewAboutme model =
         characterProfiles =
             viewFavs characters
     in
-    case model.popupCh of
-        Nothing ->
-            div [ class ("topic-aboutme d-flex flex-column" ++ " " ++ showTheme model.theme) ] [ myProfile, characterProfiles ]
-
-        Just character ->
+    case model.popUp of
+        ShowCh character ->
             div [ class ("topic-aboutme d-flex flex-column" ++ " " ++ showTheme model.theme) ] [ myProfile, characterProfiles, viewCharacter character ]
+
+        _ ->
+            div [ class ("topic-aboutme d-flex flex-column" ++ " " ++ showTheme model.theme) ] [ myProfile, characterProfiles ]
 
 
 
@@ -438,11 +443,12 @@ viewTools model =
                 []
             ]
     in
-    if model.themePicker then
-        div [ class "tools" ] (tools ++ [ viewThemePicker model ])
+    case model.popUp of
+        ThemePicker ->
+            div [ class "tools" ] (tools ++ [ viewThemePicker model ])
 
-    else
-        div [ class "tools" ] tools
+        _ ->
+            div [ class "tools" ] tools
 
 
 
