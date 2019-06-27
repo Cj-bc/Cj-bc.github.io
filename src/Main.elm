@@ -478,7 +478,7 @@ viewThemePicker model =
                 ]
                 [ text (showTheme d) ]
     in
-    div [ class ("theme-picker" ++ " " ++ showTheme model.theme) ]
+    div [ class ("theme-picker border" ++ " " ++ showTheme model.theme) ]
         ([ h1 [] [ text "Themes Picker" ] ] ++ List.map viewThemeIcon [ Dark, White ])
 
 
