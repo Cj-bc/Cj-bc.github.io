@@ -446,18 +446,21 @@ viewFooter model =
 viewTools : Model -> Html Msg
 viewTools model =
     let
-        tools =
-            [ input
-                [ type_ "image"
-                , class ("theme-picker " ++ showTheme model.theme)
-                , id "icon-colorscheme"
-                , src "assets/icon/icon_colorScheme.svg"
-                , onClick ThemePickerClicked
-                ]
-                []
-            ]
+        viewthemePickerIcon =
+            if model.popUp == ThemePicker then
+                div [ style "display" "none" ] []
+
+            else
+                input
+                    [ type_ "image"
+                    , class ("theme-picker " ++ showTheme model.theme)
+                    , id "icon-colorscheme"
+                    , src "assets/icon/icon_colorScheme.svg"
+                    , onClick ThemePickerClicked
+                    ]
+                    []
     in
-    div [ class "tools" ] tools
+    div [ class "tools" ] [ viewthemePickerIcon ]
 
 
 
