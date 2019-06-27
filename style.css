@@ -18,10 +18,7 @@ header button {
   width: 20%;
 }
 
-div.character button {
-  width: 5vw;
-  height: auto;
-}
+
 
 div.topic-aboutme div.aboutme img#icon-me {
   margin-top: 5vh;
@@ -43,13 +40,19 @@ pre.character-comments {
   padding: 1rem;
 }
 
-div.character {
+div.popUp {
   position: fixed;
   width: 90%;
   margin-left: 5vw;
   top: 5vh;
   bottom: 3vh;
 }
+
+div.popUp div.character button {
+  width: 5vw;
+  height: auto;
+}
+
 
 pre {
   white-space: pre-wrap;
