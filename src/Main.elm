@@ -147,11 +147,11 @@ view model =
     in
     { title = topicName ++ " -- Cj-bc HP"
     , body =
-        [ viewPopUp model
-        , viewHeader
+        [ viewHeader model
         , viewTopic
-        , viewFooter
+        , viewFooter model
         , viewTools model
+        , viewPopUp model
         ]
     }
 
@@ -168,14 +168,14 @@ viewWIP model =
 
 
 -- }}}
---- viewPopUp {{{
+--- viewPopUp : Model -> Html Msg {{{
 
 
 viewPopUp : Model -> Html Msg
 viewPopUp model =
     case model.popUp of
         ShowCh ch ->
-            div [ class "popUp" ] [ viewCharacter ch ]
+            div [ class "popUp" ] [ viewCharacter model ch ]
 
         ThemePicker ->
             div [ class "popUp" ] [ viewThemePicker model ]
@@ -250,9 +250,9 @@ viewFav fav =
 -- TODO: This should show more details
 
 
-viewCharacter : Character -> Html Msg
-viewCharacter (Character dic) =
-    div [ class "character border d-flex flex-column bg-gray" ]
+viewCharacter : Model -> Character -> Html Msg
+viewCharacter model (Character dic) =
+    div [ class ("character border d-flex flex-column" ++ " " ++ showTheme model.theme) ]
         [ button [ class "flex-justify-start", onClick HideCharacter ] [ text "x" ]
         , img [ class "CircleBadge", src dic.pic, title dic.name ] []
         , h1 [ class "character-name" ] [ text dic.name ]
@@ -394,9 +394,9 @@ viewBlog model =
 -- viewHeader : Html Msg {{{
 
 
-viewHeader : Html Msg
-viewHeader =
-    header []
+viewHeader : Model -> Html Msg
+viewHeader model =
+    header [ class ("header" ++ " " ++ showTheme model.theme) ]
         [ nav [ class "header-nav" ]
             [ button [ onClick (ChangeTopic Top) ] [ text "Cj-bc" ]
             , button [ onClick (ChangeTopic Aboutme) ] [ text "Aboutme" ]
@@ -412,9 +412,9 @@ viewHeader =
 -- viewFooter : Html Msg {{{
 
 
-viewFooter : Html Msg
-viewFooter =
-    footer []
+viewFooter : Model -> Html Msg
+viewFooter model =
+    footer [ class ("footer" ++ " " ++ showTheme model.theme) ]
         [ form [ name "contact", netlify "" ]
             [ p []
                 [ label [ for "footer-name" ] [ text "name:" ]
