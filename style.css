@@ -60,6 +60,11 @@ div.popUp div.character button {
 }
 
 
+div.theme-picker {
+  top: 10vh;
+  height: 80vh;
+  bottom: 10vh;
+}
 /* }}} */
 
 pre {
