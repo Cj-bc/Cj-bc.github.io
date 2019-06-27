@@ -147,7 +147,8 @@ view model =
     in
     { title = topicName ++ " -- Cj-bc HP"
     , body =
-        [ viewHeader
+        [ viewPopUp model
+        , viewHeader
         , viewTopic
         , viewFooter
         , viewTools model
@@ -163,6 +164,24 @@ viewWIP : Model -> Html Msg
 viewWIP model =
     div [ class ("WIP" ++ " " ++ showTheme model.theme) ]
         [ text "Work in progress..." ]
+
+
+
+-- }}}
+--- viewPopUp {{{
+
+
+viewPopUp : Model -> Html Msg
+viewPopUp model =
+    case model.popUp of
+        ShowCh ch ->
+            div [ class "popUp" ] [ viewCharacter ch ]
+
+        ThemePicker ->
+            div [ class "popUp" ] [ viewThemePicker model ]
+
+        NoPopUp ->
+            div [ class "popUp" ] []
 
 
 
@@ -198,12 +217,7 @@ viewAboutme model =
         characterProfiles =
             viewFavs characters
     in
-    case model.popUp of
-        ShowCh character ->
-            div [ class ("topic-aboutme d-flex flex-column" ++ " " ++ showTheme model.theme) ] [ myProfile, characterProfiles, viewCharacter character ]
-
-        _ ->
-            div [ class ("topic-aboutme d-flex flex-column" ++ " " ++ showTheme model.theme) ] [ myProfile, characterProfiles ]
+    div [ class ("topic-aboutme d-flex flex-column" ++ " " ++ showTheme model.theme) ] [ myProfile, characterProfiles ]
 
 
 
@@ -443,12 +457,7 @@ viewTools model =
                 []
             ]
     in
-    case model.popUp of
-        ThemePicker ->
-            div [ class "tools" ] (tools ++ [ viewThemePicker model ])
-
-        _ ->
-            div [ class "tools" ] tools
+    div [ class "tools" ] tools
 
 
 
