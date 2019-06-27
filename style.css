@@ -27,11 +27,7 @@ div.topic-aboutme div.aboutme img#icon-me {
 div.topic-aboutme h1.character-name,
 div.topic-aboutme div.character-links,
 div.topic-aboutme pre,
-div.topic-aboutme img,
-div.popUp h1.character-name,
-div.popUp div.character-links,
-div.popUp pre,
-div.popUp img {
+div.topic-aboutme img {
   margin: auto;
 }
 
@@ -39,6 +35,16 @@ pre.character-details,
 pre.character-comments {
   padding: 1rem;
 }
+
+/* PopUps {{{ */
+
+div.popUp h1.character-name,
+div.popUp div.character-links,
+div.popUp pre,
+div.popUp img {
+  margin: auto;
+}
+
 
 div.popUp {
   position: fixed;
@@ -53,6 +59,8 @@ div.popUp div.character button {
   height: auto;
 }
 
+
+/* }}} */
 
 pre {
   white-space: pre-wrap;
