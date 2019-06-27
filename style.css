@@ -1,3 +1,4 @@
+/* general {{{ */
 h1 {
   font-size: 3rem;
 }
@@ -5,6 +6,7 @@ h1 {
 h3 {
   font-size: 1rem;
 }
+/* }}} */
 
 img#twitter-logo,
 img#other-logo,
