@@ -30,7 +30,11 @@ div.topic-aboutme div.aboutme img#icon-me {
 div.topic-aboutme h1.character-name,
 div.topic-aboutme div.character-links,
 div.topic-aboutme pre,
-div.topic-aboutme img {
+div.topic-aboutme img,
+div.popUp h1.character-name,
+div.popUp div.character-links,
+div.popUp pre,
+div.popUp img {
   margin: auto;
 }
 
