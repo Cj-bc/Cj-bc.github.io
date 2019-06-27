@@ -2,7 +2,7 @@ port module Main exposing (main)
 
 import Browser
 import Html exposing (Html, a, article, button, div, footer, form, h1, h2, h3, header, img, input, label, nav, p, pre, text, textarea)
-import Html.Attributes exposing (class, for, href, id, name, src, title, type_)
+import Html.Attributes exposing (class, for, href, id, name, src, style, title, type_)
 import Html.Events exposing (onClick)
 import List
 import Octicons as Oct
@@ -181,7 +181,7 @@ viewPopUp model =
             div [ class "popUp" ] [ viewThemePicker model ]
 
         NoPopUp ->
-            div [ class "popUp" ] []
+            div [ class "popUp", style "display" "none" ] []
 
 
 
