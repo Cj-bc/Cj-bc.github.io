@@ -100,7 +100,7 @@ update msg model =
             ( { model | popUp = ThemePicker }, Cmd.none )
 
         ThemeChanged t ->
-            ( { model | theme = t }, Cmd.none )
+            ( { model | theme = t, popUp = NoPopUp }, Cmd.none )
 
 
 
