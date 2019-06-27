@@ -72,12 +72,20 @@ pre {
 }
 
 
-input#icon-colorscheme {
+svg#icon-colorscheme {
   width: 10%;
   height: auto;
   position: fixed;
   bottom: 2vh;
   right: 2vw;
 }
+
+svg#icon-colorscheme path  {
+  fill: rgba(75,75,75,1)
+}
+
+
+
+
 
 
