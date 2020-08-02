@@ -586,8 +586,9 @@ me =
             [ Twitter "Cj_bc_sd"
             , Github "Cj-bc"
             , Other "Qiita" "https://qiita.com/Cj-bc"
+            , Other "Misskey" "https://virtual-kaf.fun/"
             ]
-        , details = " N odetails here"
+        , details = "趣味でプログラミングやモデリングをしています"
         , comments = "It's me! Obviously"
         , pic = "assets/icon/cj-bc.jpg"
         }
