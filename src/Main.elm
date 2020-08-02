@@ -1,6 +1,7 @@
 port module Main exposing (main)
 
 import Browser
+import Browser.Navigation as Nav
 import Html exposing (Html, a, article, button, div, footer, form, header, img, input, label, nav, p, pre, text, textarea)
 import Html.Attributes exposing (class, for, href, id, name, src, title, type_)
 import Html.Events exposing (onClick)
@@ -64,8 +65,10 @@ update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     case msg of
         ChangeTopic topic ->
-            ( { model | topic = topic }, Cmd.none )
-
+            if topic == Blog then
+                (model, Nav.load "https://Cj-bc.github.io/blog")
+            else
+                ( { model | topic = topic }, Cmd.none )
         CharacterClicked ch ->
             ( { model | popupCh = Just ch }, renderYouTubeButton () )
 
@@ -583,8 +586,9 @@ me =
             [ Twitter "Cj_bc_sd"
             , Github "Cj-bc"
             , Other "Qiita" "https://qiita.com/Cj-bc"
+            , Other "Misskey" "https://virtual-kaf.fun/"
             ]
-        , details = " N odetails here"
+        , details = "趣味でプログラミングやモデリングをしています"
         , comments = "It's me! Obviously"
         , pic = "assets/icon/cj-bc.jpg"
         }
